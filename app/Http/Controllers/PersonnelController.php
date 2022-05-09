@@ -16,13 +16,13 @@ class PersonnelController extends Controller
         $personnel = new Personnel();
         $personnel->name=$request->name;
         $personnel->role=$request->role;
-        $personnel->email=$request->email;
+        $personnel->idB=$request->IdB;
         $personnel->save();
         return back()->with('personnel_created', 'Personnel has been created successfully' );
 
 
     }
-    
+
     public function index(Personnel $model)
     {
         return view('users.index', ['personnel' => $model->paginate(15)]);

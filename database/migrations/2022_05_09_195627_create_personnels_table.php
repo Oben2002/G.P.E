@@ -15,9 +15,9 @@ class CreatePersonnelsTable extends Migration
     {
         Schema::create('personnels', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('role');
-            $table->string('email')->unique();
+            $table->string('idB')->unique()->nullable();
             $table->timestamps();
         });
     }

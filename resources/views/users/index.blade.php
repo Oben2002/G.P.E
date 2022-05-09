@@ -167,6 +167,30 @@ The above copyright notice and this permission notice shall be included in all c
                                     </ul>
                                 </div>
                             </li>
+                            <li >
+                                <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples2">
+                                    <i class="nc-icon nc-single-02"></i>                                    <p>
+                                            {{ __('Connexion') }}
+                                        <b class="caret"></b>
+                                    </p>
+                                </a>
+                                <div class="collapse show" id="laravelExamples2">
+                                    <ul class="nav">
+                                        <li >
+                                            <a href="#">
+                                                <span class="sidebar-mini-icon">{{ __('UP') }}</span>
+                                                <span class="sidebar-normal">{{ __(' Enrollment ') }}</span>
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#">
+                                                <span class="sidebar-mini-icon">{{ __('U') }}</span>
+                                                <span class="sidebar-normal">{{ __(' Sauvegarde ') }}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
                              {{--  <li >
                                 <a href="{{ route('page.index', 'icons') }}">
                                     <i class="nc-icon nc-diamond"></i>
@@ -196,7 +220,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <i class="nc-icon nc-caps-small"></i>
                                     <p>{{ __('Typography') }}</p>
                                 </a>
-                            </li>  --}} 
+                            </li>  --}}
                             {{-- <li class="active-pro {{ $elementActive == 'upgrade' ? 'active' : '' }}">
                                 <a href="{{ route('page.index', 'upgrade') }}" class="bg-danger">
                                     <i class="nc-icon nc-spaceship text-white"></i>
@@ -305,7 +329,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Email</th>
+                                        <th scope="col">Biometric ID</th>
                                         <th scope="col">Role</th>
                                         <th scope="col">Creation Date</th>
                                         <th scope="col"></th>
@@ -316,7 +340,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <tr>
                                                     <td>{{$person->id}}</td>
                                                     <td>{{$person->name}}</td>
-                                                    <td>{{$person->email}}</td>
+                                                    <td>{{$person->idB}}</td>
                                                     <td>{{$person->role}}</td>
                                                     <td>{{$person->created_at}}</td>
                                                 </tr>

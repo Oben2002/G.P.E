@@ -167,6 +167,30 @@ The above copyright notice and this permission notice shall be included in all c
                                     </ul>
                                 </div>
                             </li>
+                            <li >
+                                <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples2">
+                                    <i class="nc-icon nc-single-02"></i>                                    <p>
+                                            {{ __('Connexion') }}
+                                        <b class="caret"></b>
+                                    </p>
+                                </a>
+                                <div class="collapse show" id="laravelExamples2">
+                                    <ul class="nav">
+                                        <li >
+                                            <a href="#">
+                                                <span class="sidebar-mini-icon">{{ __('UP') }}</span>
+                                                <span class="sidebar-normal">{{ __(' Enrollment ') }}</span>
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#">
+                                                <span class="sidebar-mini-icon">{{ __('U') }}</span>
+                                                <span class="sidebar-normal">{{ __(' Sauvegarde ') }}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
                             {{-- <li >
                                 <a href="{{ route('page.index', 'icons') }}">
                                     <i class="nc-icon nc-diamond"></i>
@@ -309,11 +333,12 @@ The above copyright notice and this permission notice shall be included in all c
 
                                         <div class="form-group">
                                             <label for="name">Name</label>
-                                            <input type="text" name="name" class="form-control" placeholder="Enter name">
+                                            <input type="text" name="name" class="form-control" placeholder="Ex. John Doe">
                                         </div>
                                         <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="text" name="email" class="form-control" placeholder="Enter email">
+                                            <label for="email">Biometric ID</label>
+                                            <small style="color: red" >(optional)</small>
+                                            <input type="text" name="idB" class="form-control" placeholder="Enter Biometric ID">
                                         </div>
                                         <div class="form-group">
                                             <label for="role">Role</label>
