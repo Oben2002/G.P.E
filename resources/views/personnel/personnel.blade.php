@@ -159,9 +159,9 @@ The above copyright notice and this permission notice shall be included in all c
                                             </a>
                                         </li>
                                         <li class="active">
-                                            <a href="{{ route('page.index', 'user') }}">
+                                            <a href="{{ route('page.index', 'personnel') }}">
                                                 <span class="sidebar-mini-icon">{{ __('U') }}</span>
-                                                <span class="sidebar-normal">{{ __(' User Management ') }}</span>
+                                                <span class="sidebar-normal">{{ __(' Personnel Management ') }}</span>
                                             </a>
                                         </li>
                                     </ul>

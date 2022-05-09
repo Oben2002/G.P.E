@@ -167,7 +167,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     </ul>
                                 </div>
                             </li>
-                            {{-- <li >
+                             {{--  <li >
                                 <a href="{{ route('page.index', 'icons') }}">
                                     <i class="nc-icon nc-diamond"></i>
                                     <p>{{ __('Icons') }}</p>
@@ -196,7 +196,7 @@ The above copyright notice and this permission notice shall be included in all c
                                     <i class="nc-icon nc-caps-small"></i>
                                     <p>{{ __('Typography') }}</p>
                                 </a>
-                            </li> --}}
+                            </li>  --}} 
                             {{-- <li class="active-pro {{ $elementActive == 'upgrade' ? 'active' : '' }}">
                                 <a href="{{ route('page.index', 'upgrade') }}" class="bg-danger">
                                     <i class="nc-icon nc-spaceship text-white"></i>
