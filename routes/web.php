@@ -34,8 +34,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('personnel',['as' => 'personnel.index', 'uses'=> 'App\Http\Controllers\PersonnelController@index']);
     Route::post('personnel',['as' => 'personnel.create', 'uses'=> 'App\Http\Controllers\PersonnelController@createPersonnel']);
 
-    Route::get('FingerDevices' , [ 'as'=> 'finger.create', 'uses'=>'App\Http\Controllers\BiometricDeviceController@create']);
-    Route::post('FingerDevices/create' , [ 'as'=> 'finger.store', 'uses'=>'App\Http\Controllers\BiometricDeviceController@store']);
+    Route::get('FingerDevices' , [ 'as'=> 'finger.index', 'uses'=>'App\Http\Controllers\BiometricDeviceController@index']);
+    Route::get('FingerDevices-create' , [ 'as'=> 'finger.create', 'uses'=>'App\Http\Controllers\BiometricDeviceController@create']);
+    Route::post('FingerDevices-store' , [ 'as'=> 'finger.store', 'uses'=>'App\Http\Controllers\BiometricDeviceController@store']);
+    Route::post('FingerDevicesPersonnel' , [ 'as'=> 'finger.add', 'uses'=>'App\Http\Controllers\BiometricDeviceController@addPersonnel']);
+
 
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);

@@ -3,7 +3,7 @@
 
 namespace App\Helpers;
 
-require 'zklibrary.php';
+use ZKLibrary;
 
 class FingerHelper
 {
