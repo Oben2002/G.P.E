@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\FingerDevice\StoreRequest;
-use App\Http\Requests\FingerDevice\UpdateRequest;
+use App\Http\Requests\FingerDevices\StoreRequest;
+use App\Http\Requests\FingerDevices\UpdateRequest;
 use App\Helpers\FingerHelper;
-
+use App\Models\FingerDevices;
+use App\Models\Personnel;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -19,13 +20,13 @@ class BiometricDeviceController extends Controller
     {
         $devices = FingerDevices::all();
 
-        return view('fingerDevices.index', compact('devices'));
+        return view('fingersDevices.index', compact('devices'));
     }
 
 
     public function create()
     {
-        return view('fingerDevices.create');
+        return view('fingersDevices.create');
     }
 
     public function store(StoreRequest $request): RedirectResponse
@@ -61,7 +62,6 @@ class BiometricDeviceController extends Controller
     {
         $fingerDevice->update($request->validated());
 
-        flash()->success('Success', 'Biometric Device Updated successfully !');
 
         return redirect()->route('finger_device.index');
     }
@@ -74,29 +74,27 @@ class BiometricDeviceController extends Controller
             toast("Failed to delete {$fingerDevice->name}", 'error');
         }
 
-        flash()->success('Success', 'Biometric Device deleted successfully !');
 
         return back();
     }
 
-    public function addEmployee(FingerDevices $fingerDevice): RedirectResponse
+    public function addPersonnel(FingerDevices $fingerDevice): RedirectResponse
     {
-        $device = new ZKTeco($fingerDevice->ip, 4370);
+        $device = new ZKLibrary($fingerDevice->ip, 4370);
 
         $device->connect();
 
         $deviceUsers = collect($device->getUser())->pluck('uid');
 
-        $employees = Employee::select('name', 'id')
+        $personnel = Personnel::select('name', 'id')
             ->whereNotIn('id', $deviceUsers)
             ->get();
 
         $i = 1;
 
-        foreach ($employees as $employee) {
-            $device->setUser($i++, $employee->id, $employee->name, '', '0', '0');
+        foreach ($personnel as $person) {
+            $device->setUser($i++, $person->id, $person->name, '', '0', '0');
         }
-        flash()->success('Success', 'All Employees added to Biometric device successfully!');
 
         return back();
     }
