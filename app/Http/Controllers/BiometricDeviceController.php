@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\FingerDevices\StoreRequest;
-use App\Http\Requests\FingerDevices\UpdateRequest;
+use App\Http\Requests\FingerDevices\StoreDevice;
+use App\Http\Requests\FingerDevices\UpdateDevice;
 use App\Helpers\FingerHelper;
 use App\Models\FingerDevices;
 use App\Models\Personnel;
-
+use ZKLibrary;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
@@ -29,7 +29,7 @@ class BiometricDeviceController extends Controller
         return view('fingersDevices.create');
     }
 
-    public function store(StoreRequest $request): RedirectResponse
+    public function store(StoreDevice $request): RedirectResponse
     {
         $helper = new FingerHelper();
 
@@ -50,15 +50,15 @@ class BiometricDeviceController extends Controller
 
     public function show(FingerDevices $fingerDevice)
     {
-        return view('fingerDevices.show', compact('fingerDevice'));
+        return view('fingersDevices.show', compact('fingerDevice'));
     }
 
     public function edit(FingerDevices $fingerDevice)
     {
-        return view('fingerDevices.edit', compact('fingerDevice'));
+        return view('fingersDevices.edit', compact('fingerDevice'));
     }
 
-    public function update(UpdateRequest $request, FingerDevices $fingerDevice): RedirectResponse
+    public function update(UpdateDevice $request, FingerDevices $fingerDevice): RedirectResponse
     {
         $fingerDevice->update($request->validated());
 

@@ -41,7 +41,24 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+
+             <div class="collapse show" id="laravelExamples2">
+                                    <ul class="nav">
+                                        <li >
+                                            <a href="{{ route('finger.index') }}">
+                                                <span class="sidebar-mini-icon">{{ __('UP') }}</span>
+                                                <span class="sidebar-normal">{{ __(' Enrollment ') }}</span>
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#">
+                                                <span class="sidebar-mini-icon">{{ __('U') }}</span>
+                                                <span class="sidebar-normal">{{ __(' Sauvegarde ') }}</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
             {{-- <li class="{{ $elementActive == 'icons' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'icons') }}">
                     <i class="nc-icon nc-diamond"></i>
