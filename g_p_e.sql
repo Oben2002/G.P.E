@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 09, 2022 at 09:39 PM
+-- Generation Time: May 17, 2022 at 11:12 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -157,45 +157,6 @@ CREATE TABLE IF NOT EXISTS `personnels` (
 
 INSERT INTO `personnels` (`id`, `name`, `role`, `idB`, `created_at`, `updated_at`) VALUES
 (1, 'John Doe', 'Student', NULL, '2022-05-09 18:58:45', '2022-05-09 18:58:45');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `schedules`
---
-
-DROP TABLE IF EXISTS `schedules`;
-CREATE TABLE IF NOT EXISTS `schedules` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `time_in` time NOT NULL,
-  `time_out` time NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `schedules_slug_unique` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `schedules`
---
-
-INSERT INTO `schedules` (`id`, `slug`, `time_in`, `time_out`, `created_at`, `updated_at`) VALUES
-(1, 'edrtyurio', '23:09:06', '23:19:06', '2022-05-02 22:09:06', '2022-05-02 22:09:06');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `schedule_personnel`
---
-
-DROP TABLE IF EXISTS `schedule_personnel`;
-CREATE TABLE IF NOT EXISTS `schedule_personnel` (
-  `emp_id` int(10) UNSIGNED NOT NULL,
-  `schedule_id` int(10) UNSIGNED NOT NULL,
-  KEY `schedule_personnel_emp_id_foreign` (`emp_id`),
-  KEY `schedule_personnel_schedule_id_foreign` (`schedule_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 

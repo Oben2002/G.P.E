@@ -41,6 +41,14 @@
                         </li>
                     </ul>
                 </div>
+                <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
+                    <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
+                        <i class="nc-icon nc-single-02"></i>
+                        <p>
+                                {{ __('Biometric Devices') }}
+                            <b class="caret"></b>
+                        </p>
+                    </a>
 
              <div class="collapse show" id="laravelExamples2">
                                     <ul class="nav">
