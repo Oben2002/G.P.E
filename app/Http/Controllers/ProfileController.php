@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +19,7 @@ class ProfileController extends Controller
     {
         return view('profile.edit');
     }
-    
+
     /**
      * Update the profile
      *
@@ -31,6 +33,17 @@ class ProfileController extends Controller
         return back()->withStatus(__('Profile successfully updated.'));
     }
 
+    public function changeProfile(Request $request){
+        $request->validate([
+            'image'     =>  'required|image|mimes:jpeg,png,JPG,jpg,gif|max:4096'
+        ]);
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();
+            $request->image->storeAs('images',$filename,'public');
+            auth()->user()->update(['image'=>$filename]);
+        }
+        return back()->with(['status' => 'Profile image updated successfully.']);
+    }
     /**
      * Change the password
      *

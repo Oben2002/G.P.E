@@ -75,6 +75,7 @@
                                         </span>
                                     @endif
                                 </div>
+
                                 <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">

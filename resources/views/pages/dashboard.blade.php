@@ -17,9 +17,9 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Capacity</p>
-                                    <p class="card-title">150GB
-                                        <p>
+
+                                    <p class="card-category">Users</p>
+                                    <p class="card-title">{{ $data['user'] }}<p>
                                 </div>
                             </div>
                         </div>
@@ -43,8 +43,8 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Revenue</p>
-                                    <p class="card-title">$ 1,345
+                                    <p class="card-category">Personnel</p>
+                                    <p class="card-title">{{ $data['personnel'] }}
                                         <p>
                                 </div>
                             </div>
@@ -69,8 +69,8 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Errors</p>
-                                    <p class="card-title">23
+                                    <p class="card-category">Biometric Devices</p>
+                                    <p class="card-title">{{ $data['FingerDevices'] }}
                                         <p>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            {{--  <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
                         <div class="row">
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  --}}
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -119,7 +119,10 @@
                         <p class="card-category">24 Hours performance</p>
                     </div>
                     <div class="card-body ">
-                        <canvas id=chartHours width="400" height="100"></canvas>
+                        <div class="chart-container">
+                            <div class="pie-chart-container">
+                              <canvas id="canvas"></canvas>
+                            </div>
                     </div>
                     <div class="card-footer ">
                         <hr>
@@ -186,4 +189,7 @@
             demo.initChartsPages();
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+
 @endpush

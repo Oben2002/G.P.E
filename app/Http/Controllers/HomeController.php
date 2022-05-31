@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Personnel;
+use App\Models\FingerDevices;
+use App\Models\User;
+
 
 class HomeController extends Controller
 {
@@ -21,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.dashboard');
+        $data=[
+            'personnel' => Personnel::count(),
+            'user' => User::count(),
+            'FingerDevices' => FingerDevices::count()
+            ];
+        return view('pages.dashboard',compact('data'));
     }
 }

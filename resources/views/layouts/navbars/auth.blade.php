@@ -29,21 +29,21 @@
                     <ul class="nav">
                         <li class="{{ $elementActive == 'profile' ? 'active' : '' }}">
                             <a href="{{ route('profile.edit') }}">
-                                <span class="sidebar-mini-icon">{{ __('UP') }}</span>
+                                <i class="nc-icon nc-satisfied"></i>
                                 <span class="sidebar-normal">{{ __(' User Profile ') }}</span>
                             </a>
                         </li>
                         <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
                             <a href="{{ route('page.index', 'personnels') }}">
-                                <span class="sidebar-mini-icon">{{ __('U') }}</span>
+                                <i class="nc-icon nc-briefcase-24"></i>
                                 <span class="sidebar-normal">{{ __(' Personnel Management ') }}</span>
                             </a>
                         </li>
                     </ul>
                 </div>
-                <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
-                    <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
-                        <i class="nc-icon nc-single-02"></i>
+                <li class="{{ $elementActive == 'Biometric Devices' || $elementActive == 'enrollment' ? 'active' : '' }}">
+                    <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples2">
+                        <i class="nc-icon nc-touch-id"></i>
                         <p>
                                 {{ __('Biometric Devices') }}
                             <b class="caret"></b>
@@ -54,16 +54,11 @@
                                     <ul class="nav">
                                         <li >
                                             <a href="{{ route('finger.index') }}">
-                                                <span class="sidebar-mini-icon">{{ __('UP') }}</span>
+                                                <i class="nc-icon nc-tap-01"></i>
                                                 <span class="sidebar-normal">{{ __(' Enrollment ') }}</span>
                                             </a>
                                         </li>
-                                        <li class="active">
-                                            <a href="#">
-                                                <span class="sidebar-mini-icon">{{ __('U') }}</span>
-                                                <span class="sidebar-normal">{{ __(' Sauvegarde ') }}</span>
-                                            </a>
-                                        </li>
+                                       
                                     </ul>
                                 </div>
                             </li>

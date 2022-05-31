@@ -1,7 +1,7 @@
 
 @extends('layouts.app', [
     'class' => '',
-    'elementActive' => 'Personnel'
+    'elementActive' => 'Biometric Devices'
 ])
 @section('content')
         <div class="content">
@@ -12,6 +12,11 @@
                         </h3>
 
                     </div>
+                    @if (Session::has('Unable to connect'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{Session::get('Unable to connect')}}
+                                    </div>
+                                @endif
 
                     <div class="card-body">
 

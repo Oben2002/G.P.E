@@ -67,6 +67,15 @@
                             <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('My profile') }}</a>
                         </div>
                     </div>
+
+                </li>
+                <li>
+                    <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        @if (auth()->user()->image)
+                            <img src="{{asset('/storage/images/'.auth()->user()->image)}}" style="width: 40px; height: 40px; border-radius: 50%;">
+                        @endif
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
                 </li>
             </ul>
         </div>
