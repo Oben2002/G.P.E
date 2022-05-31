@@ -42,7 +42,7 @@
                     </ul>
                 </div>
                 <li class="{{ $elementActive == 'user' || $elementActive == 'profile' ? 'active' : '' }}">
-                    <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples">
+                    <a data-toggle="collapse" aria-expanded="true" href="#laravelExamples2">
                         <i class="nc-icon nc-single-02"></i>
                         <p>
                                 {{ __('Biometric Devices') }}
@@ -59,9 +59,9 @@
                                             </a>
                                         </li>
                                         <li class="active">
-                                            <a href="#">
-                                                <span class="sidebar-mini-icon">{{ __('U') }}</span>
-                                                <span class="sidebar-normal">{{ __(' Sauvegarde ') }}</span>
+                                            <a href="{{ route('ExportContactsController.index') }}">
+                                                <span class="sidebar-mini-icon">{{ __('Down') }}</span>
+                                                <span class="sidebar-normal">{{ __(' Planning ') }}</span>
                                             </a>
                                         </li>
                                     </ul>
