@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 17, 2022 at 11:12 PM
+-- Generation Time: Jun 06, 2022 at 10:26 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -71,23 +71,24 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(12, '2014_10_12_000000_create_users_table', 6),
+(13, '2014_10_12_100000_create_password_resets_table', 6),
+(14, '2019_08_19_000000_create_failed_jobs_table', 6),
 (5, '2022_04_28_145230_create_personnels_table', 2),
 (6, '2022_05_02_210801_create_schedules_table', 3),
 (7, '2022_05_09_140941_create_personnels_table', 4),
 (8, '2022_05_09_142110_create_personnels_table', 5),
-(9, '2022_05_09_195627_create_personnels_table', 6),
-(10, '2022_05_09_212536_create_finger_devices_table', 7);
+(15, '2019_12_14_000001_create_personal_access_tokens_table', 6),
+(16, '2022_05_09_195627_create_personnels_table', 6),
+(17, '2022_05_09_212536_create_finger_devices_table', 6),
+(18, '2022_06_02_045745_create_plannings_table', 6);
 
 -- --------------------------------------------------------
 
@@ -102,13 +103,6 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `password_resets`
---
-
-INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('dorcasoben2002@gmail.com', '$2y$10$3aObFN/F5a4jTauJAJhyjuj6qtd8tO3355RuK5Ma27XRb1/6D5EXi', '2022-04-28 22:29:01');
 
 -- --------------------------------------------------------
 
@@ -149,14 +143,39 @@ CREATE TABLE IF NOT EXISTS `personnels` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personnels_name_unique` (`name`),
   UNIQUE KEY `personnels_idb_unique` (`idB`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `personnels`
+-- Table structure for table `plannings`
 --
 
-INSERT INTO `personnels` (`id`, `name`, `role`, `idB`, `created_at`, `updated_at`) VALUES
-(1, 'John Doe', 'Student', NULL, '2022-05-09 18:58:45', '2022-05-09 18:58:45');
+DROP TABLE IF EXISTS `plannings`;
+CREATE TABLE IF NOT EXISTS `plannings` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `jour` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `horaire` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `employee` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `plannings`
+--
+
+INSERT INTO `plannings` (`id`, `jour`, `horaire`, `employee`, `created_at`, `updated_at`) VALUES
+(2, 'lundi', '7hr30', 'Bissog', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
+(3, 'mardi', '7hr30 -9hr30', 'Alex', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
+(4, 'mercredi', '8h30 -10hr30', 'Gaelle', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
+(5, 'lundi', '7hr30', 'Bissog', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
+(6, 'mardi', '7hr30 -9hr30', 'Alex', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
+(7, 'mercredi', '8h30 -10hr30', 'Gaelle', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
+(8, 'lundi', '7hr30', 'Bissog', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
+(9, 'mardi', '7hr30 -9hr30', 'Alex', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
+(10, 'mercredi', '8h30 -10hr30', 'Gaelle', '2022-06-06 09:13:13', '2022-06-06 09:13:13');
 
 -- --------------------------------------------------------
 
@@ -170,25 +189,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'user.png',
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@paper.com', '2022-04-28 09:11:48', '$2y$10$UZg2eOI24BQcBLSz.Bvyu.RNdbOfebRagno1u7Js3E0Ir5ZH0Q.Dq', NULL, '2022-04-28 09:11:48', '2022-04-28 09:23:33'),
-(2, 'Oben', 'dorcasoben2002@gmail.com', NULL, '$2y$10$XI0H84VoSLLWQLl5ySrFeuz48wTCDedeI4m41A/j/W95t8hCMAFEu', NULL, '2022-04-28 10:30:18', '2022-04-28 10:30:18'),
-(3, 'Tumasang', 'tumasangleonel@gmail.com', NULL, '$2y$10$n9T67iswMOVvKO.mcoi9I.kVYgljZ1CqM8bTMUvu0Qcolt23Msxd.', NULL, '2022-04-28 12:51:32', '2022-04-28 14:07:39'),
-(4, 'Abigail', 'abigail@gmail.com', NULL, '$2y$10$6AeUD5ozAKdAX0rWI0i4Eer6TyYOuDUc4guM2tXH1s33wO5YjU9dS', NULL, '2022-04-28 18:32:15', '2022-04-28 18:32:15'),
-(5, 'edzogo', 'lucienedzogo@gmail.com', NULL, '$2y$10$4kLFj63LAV9u7/Zn2se9leLrwvMbZge1tcJYIANR0jgEbFRMRwQB6', NULL, '2022-05-04 08:04:27', '2022-05-04 08:04:27'),
-(6, 'UE', '545859@gmail.com', NULL, '$2y$10$2x1W4LzB.Osb5hKGCzMTvePLwvMnj1zCvUkOk6wbPaCe7P0Xjmiu.', NULL, '2022-05-05 12:34:04', '2022-05-05 12:34:04');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `image`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Dorcas', 'dorcasoben2002@gmail.com', NULL, 'user.png', '$2y$10$Y9ucCpXGU7I23vqDnZAh9OqsbZX9FehrE/yQBmxI7DwJUOz9LyXeW', NULL, '2022-06-06 09:12:21', '2022-06-06 09:12:21');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
