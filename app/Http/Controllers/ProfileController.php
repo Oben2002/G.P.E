@@ -35,7 +35,7 @@ class ProfileController extends Controller
 
     public function changeProfile(Request $request){
         $request->validate([
-            'image'     =>  'required|image|mimes:jpeg,png,JPG,jpg,gif|max:4096'
+            'image'     =>  'required|image|mimes:jpeg,png,JPG,jpg,gif|max:2048'
         ]);
         if($request->hasFile('image')){
             $filename = $request->image->getClientOriginalName();

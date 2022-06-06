@@ -69,7 +69,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        {{-- <h4 class="card-title">{{ __('Team Members') }}</h4> --}}
+                         <h4 class="card-title">{{ __('Update Profile Image') }}</h4>
                     </div>
                     <div class="card-body">
                         <form action="{{route('profile.change')}}" method="POST" enctype="multipart/form-data">

@@ -51,6 +51,9 @@ Route::group(['middleware' => 'auth'], function () {
     //Route::post('FingerDevices-add' , [ 'as'=> 'finger.add', 'uses'=>'App\Http\Controllers\BiometricDeviceController@addPersonnel']);
    // Route::post('FingerDevices-update' , [ 'as'=> 'finger.update', 'uses'=>'App\Http\Controllers\BiometricDeviceController@update']);
 
+   Route::get('file-import-export', ['as' =>'file.import-export','uses' => 'App\Http\Controllers\PlanningController@fileImportExport']);
+   Route::post('file-import', ['as' =>'file.import','uses' => 'App\Http\Controllers\PlanningController@fileImport']);
+   Route::get('file-export', ['as' =>'file.export','uses' => 'App\Http\Controllers\PlanningController@fileExport']);
 
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);

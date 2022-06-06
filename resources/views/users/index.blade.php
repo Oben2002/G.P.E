@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="col-12">
-                                                    </div>
+                        </div>
 
                         <div class="table-responsive">
                             <table class="table align-items-center table-flush table-striped">

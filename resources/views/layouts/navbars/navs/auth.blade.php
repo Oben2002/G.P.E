@@ -36,7 +36,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item btn-rotate dropdown">
+                {{--  <li class="nav-item btn-rotate dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="nc-icon nc-bell-55"></i>
@@ -49,8 +49,8 @@
                         <a class="dropdown-item" href="#">{{ __('Another action') }}</a>
                         <a class="dropdown-item" href="#">{{ __('Something else here') }}</a>
                     </div>
-                </li>
-                <li class="nav-item btn-rotate dropdown">
+                </li>  --}}
+                {{--  <li class="nav-item btn-rotate dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink2"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="nc-icon nc-settings-gear-65"></i>
@@ -68,14 +68,24 @@
                         </div>
                     </div>
 
-                </li>
-                <li>
-                    <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        @if (auth()->user()->image)
-                            <img src="{{asset('/storage/images/'.auth()->user()->image)}}" style="width: 40px; height: 40px; border-radius: 50%;">
+                </li>  --}}
+                <li class="nav-item btn-rotate dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink2"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         @if (auth()->user()->image !== 'user.png')
+                            <img src="{{asset('/storage/images/'.auth()->user()->image)}}" style="width: 30px; height: 30px; border-radius: 50%;">
                         @endif
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink2">
+                        <form class="dropdown-item" action="{{ route('logout') }}" id="formLogOut" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" onclick="document.getElementById('formLogOut').submit();">{{ __('Log out') }}</a>
+                            <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('My profile') }}</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>

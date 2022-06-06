@@ -39,6 +39,12 @@
                                 <span class="sidebar-normal">{{ __(' Personnel Management ') }}</span>
                             </a>
                         </li>
+                        <li class="{{ $elementActive == 'user' ? 'active' : '' }}">
+                            <a href="{{ route('file.import-export', 'plannings') }}">
+                                <i class="nc-icon nc-tile-56"></i>
+                                <span class="sidebar-normal">{{ __(' Planning ') }}</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <li class="{{ $elementActive == 'Biometric Devices' || $elementActive == 'enrollment' ? 'active' : '' }}">
@@ -58,7 +64,7 @@
                                                 <span class="sidebar-normal">{{ __(' Enrollment ') }}</span>
                                             </a>
                                         </li>
-                                       
+
                                     </ul>
                                 </div>
                             </li>
