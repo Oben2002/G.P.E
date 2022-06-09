@@ -90,7 +90,12 @@ return array(
     'Database\\Seeders\\' => array($baseDir . '/database/seeders'),
     'Database\\Factories\\' => array($baseDir . '/database/factories'),
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
+<<<<<<< HEAD
     'Complex\\' => array($vendorDir . '/markbaker/complex/classes/src'),
+=======
+    'ConsoleTVs\\Charts\\' => array($vendorDir . '/consoletvs/charts/src'),
+    'Chartisan\\PHP\\' => array($vendorDir . '/chartisan/php/src'),
+>>>>>>> b4e025e526102fe702e748c9ba1823973186d9d2
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'Asm89\\Stack\\' => array($vendorDir . '/asm89/stack-cors/src'),

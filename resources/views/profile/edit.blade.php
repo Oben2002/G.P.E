@@ -5,11 +5,7 @@
 
 @section('content')
     <div class="content">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
+
         @if (session('password_status'))
             <div class="alert alert-success" role="alert">
                 {{ session('password_status') }}
@@ -19,18 +15,24 @@
             <div class="col-md-4">
                 <div class="card card-user">
                     <div class="image">
-                        <img src="{{ asset('paper/img/damir-bosnjak.jpg') }}" alt="...">
+
+                         <img src="{{ asset('paper/img/damir-bosnjak.jpg') }}" alt="...">
                     </div>
                     <div class="card-body">
                         <div class="author">
-                            <a href="#">
-                                <img class="avatar border-gray" src="{{ asset('paper/img/mike.jpg') }}" alt="...">
 
-                                <h5 class="title">{{ __(auth()->user()->name)}}</h5>
+                            <a href="#">
+                            <img class="avatar border-gray" src="{{auth()->user()->image !== 'user.png'? asset('/storage/images/'.auth()->user()->image) : asset('paper/img/default-avatar.png')}}" alt="profile_image" >
                             </a>
+                            <h5 class="title">{{ __(auth()->user()->name)}}</h5>
                             <p class="description">
                             @ {{ __(auth()->user()->name)}}
                             </p>
+                            <br>
+                            <p class="description">
+                                {{ __(auth()->user()->email)}}
+                            </p>
+
                         </div>
                         {{-- <p class="description text-center">
                             {{ __('I like the way you work it') }}
@@ -43,6 +45,7 @@
                         <div class="button-container">
                             <div class="row">
                                 <div class="col-lg-3 col-md-6 col-6 ml-auto">
+
                                     {{-- <h5>{{ __('12') }}
                                         <br>
                                         <small>{{ __('Files') }}</small>
@@ -69,6 +72,22 @@
                         {{-- <h4 class="card-title">{{ __('Team Members') }}</h4> --}}
                     </div>
                     <div class="card-body">
+                        <form action="{{route('profile.change')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFileLang" lang="es" name="image">
+                                    <label class="custom-file-label" for="image">Select image</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-round">{{ __('Upload') }}</button>
+
+                        </form>
+                        @if (Session::has('status'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{Session::get('status')}}
+                                    </div>
+                                @endif
                         {{--<ul class="list-unstyled team-members">
                             <li>
                                 <div class="row">

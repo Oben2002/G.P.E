@@ -8,7 +8,10 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+<<<<<<< HEAD
     'App\\Exports\\ContactsExport' => $baseDir . '/app/Exports/ContactsExport.php',
+=======
+>>>>>>> b4e025e526102fe702e748c9ba1823973186d9d2
     'App\\Helpers\\FingerHelper' => $baseDir . '/app/Helpers/FingerHelper.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -144,11 +147,23 @@ return array(
     'Carbon\\Translator' => $vendorDir . '/nesbot/carbon/src/Carbon/Translator.php',
     'Carbon\\TranslatorImmutable' => $vendorDir . '/nesbot/carbon/src/Carbon/TranslatorImmutable.php',
     'Carbon\\TranslatorStrongTypeInterface' => $vendorDir . '/nesbot/carbon/src/Carbon/TranslatorStrongTypeInterface.php',
+<<<<<<< HEAD
     'Complex\\Complex' => $vendorDir . '/markbaker/complex/classes/src/Complex.php',
     'Complex\\Exception' => $vendorDir . '/markbaker/complex/classes/src/Exception.php',
     'Complex\\Functions' => $vendorDir . '/markbaker/complex/classes/src/Functions.php',
     'Complex\\Operations' => $vendorDir . '/markbaker/complex/classes/src/Operations.php',
+=======
+    'Chartisan\\PHP\\ChartData' => $vendorDir . '/chartisan/php/src/ChartData.php',
+    'Chartisan\\PHP\\Chartisan' => $vendorDir . '/chartisan/php/src/Chartisan.php',
+    'Chartisan\\PHP\\DatasetData' => $vendorDir . '/chartisan/php/src/DatasetData.php',
+    'Chartisan\\PHP\\ServerData' => $vendorDir . '/chartisan/php/src/ServerData.php',
+>>>>>>> b4e025e526102fe702e748c9ba1823973186d9d2
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'ConsoleTVs\\Charts\\BaseChart' => $vendorDir . '/consoletvs/charts/src/BaseChart.php',
+    'ConsoleTVs\\Charts\\ChartsController' => $vendorDir . '/consoletvs/charts/src/ChartsController.php',
+    'ConsoleTVs\\Charts\\ChartsServiceProvider' => $vendorDir . '/consoletvs/charts/src/ChartsServiceProvider.php',
+    'ConsoleTVs\\Charts\\Commands\\CreateChart' => $vendorDir . '/consoletvs/charts/src/Commands/CreateChart.php',
+    'ConsoleTVs\\Charts\\Registrar' => $vendorDir . '/consoletvs/charts/src/Registrar.php',
     'Cron\\AbstractField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
     'Cron\\DayOfMonthField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',

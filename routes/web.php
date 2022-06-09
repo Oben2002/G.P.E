@@ -56,7 +56,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
+<<<<<<< HEAD
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
+=======
+	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
+    Route::post('profile', ['as' => 'profile.change', 'uses' => 'App\Http\Controllers\ProfileController@changeProfile'] );
+>>>>>>> b4e025e526102fe702e748c9ba1823973186d9d2
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 
     // Route::post('/', [ContactsController::class, 'index']);

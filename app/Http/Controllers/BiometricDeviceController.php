@@ -43,9 +43,12 @@ class BiometricDeviceController extends Controller
             FingerDevices::create($request->validated() + ['serialNumber' => $serial]);
 
         } else {
+            return back()->with('Unable to connect', 'Connection problem' );
+
+
         }
 
-        return redirect()->route('finger_device.index');
+        return redirect()->route('FingerDevices.index');
     }
 
     public function show(FingerDevices $fingerDevice)
