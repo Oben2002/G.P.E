@@ -26,9 +26,19 @@ class PlanningExport implements FromCollection,WithHeadings
 
             'id',
 
-            'Jour',
+            'Lundi',
 
-            'Horaire',
+            'Mardi',
+
+            'Mercredi',
+
+            'Jeudi',
+
+            'Vendredi',
+
+            'Samedi',
+
+            'Dimanche',
 
             'Employee',
 

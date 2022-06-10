@@ -10,8 +10,20 @@ class Planning extends Model
     use HasFactory;
     protected $table="plannings";
     protected $fillable = [
-        "jour",
-        "horaire",
-        "employee",
+            "Lundi",
+
+            "Mardi",
+
+            "Mercredi",
+
+            "Jeudi",
+
+            "Vendredi",
+
+            "Samedi",
+
+            "Dimanche",
+
+            "Employee",
     ];
 }

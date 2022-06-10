@@ -15,9 +15,17 @@ class CreatePlanningsTable extends Migration
     {
         Schema::create('plannings', function (Blueprint $table) {
             $table->id();
-            $table->string('jour');
-            $table->string('horaire');
-            $table->string('employee');
+            $table->integer('Lundi');
+            $table->integer('Mardi');
+            $table->integer('Mercredi');
+            $table->integer('Jeudi');
+            $table->integer('Vendredi');
+            $table->integer('Samedi');
+            $table->integer('Dimanche');
+            $table->string('Employee');
+            $table->foreign('Employee')
+                ->references('name')->on('personnels')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

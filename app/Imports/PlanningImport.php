@@ -18,9 +18,23 @@ class PlanningImport implements ToModel,WithHeadingRow
     {
         return new Planning([
 
-                'jour'    => $row['jour'],
-                'horaire' => $row['horaire'],
-                'employee' => $row['employee'],
+                'id' => $row['id'],
+
+                'Lundi' => $row['lundi'],
+
+                'Mardi' =>$row['mardi'],
+
+                'Mercredi' =>$row['mercredi'],
+
+                'Jeudi' =>$row['jeudi'],
+
+                'Vendredi' =>$row['vendredi'],
+
+                'Samedi' => $row['samedi'],
+
+                'Dimanche' =>$row['dimanche'],
+
+                'Employee' =>$row['employee'],
 
             //
         ]);

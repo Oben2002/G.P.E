@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 06, 2022 at 10:26 AM
+-- Generation Time: Jun 09, 2022 at 07:06 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -88,7 +88,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (15, '2019_12_14_000001_create_personal_access_tokens_table', 6),
 (16, '2022_05_09_195627_create_personnels_table', 6),
 (17, '2022_05_09_212536_create_finger_devices_table', 6),
-(18, '2022_06_02_045745_create_plannings_table', 6);
+(18, '2022_06_02_045745_create_plannings_table', 6),
+(19, '2022_06_08_082455_create_plannings_table', 7);
 
 -- --------------------------------------------------------
 
@@ -154,28 +155,33 @@ CREATE TABLE IF NOT EXISTS `personnels` (
 DROP TABLE IF EXISTS `plannings`;
 CREATE TABLE IF NOT EXISTS `plannings` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `jour` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `horaire` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `employee` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Lundi` int(11) NOT NULL,
+  `Mardi` int(11) NOT NULL,
+  `Mercredi` int(11) NOT NULL,
+  `Jeudi` int(11) NOT NULL,
+  `Vendredi` int(11) NOT NULL,
+  `Samedi` int(11) NOT NULL,
+  `Dimanche` int(11) NOT NULL,
+  `Employee` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `plannings_employee_foreign` (`Employee`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `plannings`
 --
 
-INSERT INTO `plannings` (`id`, `jour`, `horaire`, `employee`, `created_at`, `updated_at`) VALUES
-(2, 'lundi', '7hr30', 'Bissog', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
-(3, 'mardi', '7hr30 -9hr30', 'Alex', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
-(4, 'mercredi', '8h30 -10hr30', 'Gaelle', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
-(5, 'lundi', '7hr30', 'Bissog', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
-(6, 'mardi', '7hr30 -9hr30', 'Alex', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
-(7, 'mercredi', '8h30 -10hr30', 'Gaelle', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
-(8, 'lundi', '7hr30', 'Bissog', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
-(9, 'mardi', '7hr30 -9hr30', 'Alex', '2022-06-06 09:13:13', '2022-06-06 09:13:13'),
-(10, 'mercredi', '8h30 -10hr30', 'Gaelle', '2022-06-06 09:13:13', '2022-06-06 09:13:13');
+INSERT INTO `plannings` (`id`, `Lundi`, `Mardi`, `Mercredi`, `Jeudi`, `Vendredi`, `Samedi`, `Dimanche`, `Employee`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1, 'Oben', '2022-06-08 08:01:13', '2022-06-08 08:01:13'),
+(2, 1, 1, 1, 1, 1, 1, 1, 'Oben', '2022-06-08 12:50:40', '2022-06-08 12:50:40'),
+(3, 0, 0, 1, 1, 1, 1, 1, 'Oben', '2022-06-08 16:52:23', '2022-06-08 16:52:23'),
+(4, 1, 1, 1, 1, 1, 1, 1, 'Oben', '2022-06-08 16:52:23', '2022-06-08 16:52:23'),
+(5, 0, 0, 1, 6, 8, 1, 10, 'Oben', '2022-06-08 16:53:49', '2022-06-08 16:53:49'),
+(6, 1, 1, 1, 1, 1, 1, 1, 'Oben', '2022-06-08 16:53:49', '2022-06-08 16:53:49'),
+(7, 0, 0, 1, 6, 8, 1, 10, 'Oben', '2022-06-08 16:58:14', '2022-06-08 16:58:14'),
+(8, 1, 2, 2, 1, 1, 1, 1, 'Oben', '2022-06-08 16:58:14', '2022-06-08 16:58:14');
 
 -- --------------------------------------------------------
 
@@ -203,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `image`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Dorcas', 'dorcasoben2002@gmail.com', NULL, 'user.png', '$2y$10$Y9ucCpXGU7I23vqDnZAh9OqsbZX9FehrE/yQBmxI7DwJUOz9LyXeW', NULL, '2022-06-06 09:12:21', '2022-06-06 09:12:21');
+(1, 'Dorcas Oben', 'dorcasoben2002@gmail.com', NULL, 'backgroudui.jpg', '$2y$10$Y9ucCpXGU7I23vqDnZAh9OqsbZX9FehrE/yQBmxI7DwJUOz9LyXeW', NULL, '2022-06-06 09:12:21', '2022-06-09 05:42:36');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

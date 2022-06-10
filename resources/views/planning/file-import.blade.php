@@ -19,12 +19,47 @@
                                     <h3 class="mb-0">Planning</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="{{route('page.index','personnels')}}" class="btn btn-sm btn-primary">Back</a>
+                                    <div class="col-12">
+                                        <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#demoModal">Instructions</button>
+                                        <div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="demoModalLabel">How to import</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-
+                                            label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                                    <div class="modal-body">
+                                            <p>At first trial export the data and fill in the informations as follows:</p>
+                                            <ul>
+                                                <li>
+                                                    0 = 8hr30 -17hr30
+                                                </li>
+                                                <li>
+                                                    1 = 8hr30 -14hr30
+                                                </li>
+                                                <li>
+                                                   2 = 13hr30 -20hr
+                                                </li>
+                                                <li>
+                                                    3 = 22hr -4hr
+                                                </li>
+                                            </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
+
+                                    </div>                                </div>
+                            </div>
                         </div>
+
 
 <form action="{{ route('file.import') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -47,19 +82,115 @@
         <thead class="thead-light">
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Jour</th>
-                <th scope="col">Horaire</th>
                 <th scope="col">Employee</th>
-                <th scope="col"></th>
+                <th scope="col">Lundi</th>
+                <th scope="col">Mardi</th>
+                <th scope="col">Mercredi</th>
+                <th scope="col">Jeudi</th>
+                <th scope="col">Vendredi</th>
+                <th scope="col">Samedi</th>
+                <th scope="col">Dimanche</th>
             </tr>
         </thead>
         <tbody>
                     @foreach ($planning as $plan)
                         <tr>
                             <td>{{$plan->id}}</td>
-                            <td>{{$plan->jour}}</td>
-                            <td>{{$plan->horaire}}</td>
-                            <td>{{$plan->employee}}</td>
+                            <td>{{$plan->Employee}}</td>
+                            <td>
+                                @if ($plan->Lundi===0)
+                                <i class="bi bi-brightness-alt-high-fill"></i>
+                                @elseif ($plan->Lundi===1)
+                                <i class="bi bi-brightness-high cyan-text"></i>
+                                @elseif($plan->Lundi===2)
+                                <i class="bi bi-cloud-moon-fill cyan-text"></i>
+                                @elseif($plan->Lundi===3)
+                                <i class="bi bi-moon-fill cyan-text"></i>
+                                @else
+                                <p>Not valid</p>
+                                @endif
+
+                            </td>
+                            <td>
+                                @if ($plan->Mardi===0)
+                                <i class="bi bi-brightness-alt-high-fill"></i>
+                                @elseif ($plan->Mardi===1)
+                                <i class="bi bi-brightness-high"></i>
+                                @elseif($plan->Mardi===2)
+                                <i class="bi bi-cloud-moon-fill"></i>
+                                @elseif($plan->Mardi===3)
+                                <i class="bi bi-moon-fill"></i>
+                                @else
+                                <p>Not valid</p>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($plan->Mercredi===0)
+                                <i class="bi bi-brightness-alt-high-fill"></i>
+                                @elseif ($plan->Mercredi===1)
+                                <i class="bi bi-brightness-high"></i>
+                                @elseif($plan->Mercredi===2)
+                                <i class="bi bi-cloud-moon-fill"></i>
+                                @elseif($plan->Mercredi===3)
+                                <i class="bi bi-moon-fill"></i>
+                                @else
+                                <p>Not valid</p>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($plan->Jeudi===0)
+                                <i class="bi bi-brightness-alt-high-fill"></i>
+                                @elseif ($plan->Jeudi===1)
+                                <i class="bi bi-brightness-high"></i>
+                                @elseif($plan->Jeudi===2)
+                                <i class="bi bi-cloud-moon-fill"></i>
+                                @elseif($plan->Jeudi===3)
+                                <i class="bi bi-moon-fill"></i>
+                                @else
+                                <p>Not valid</p>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($plan->Vendredi===0)
+                                <i class="bi bi-brightness-alt-high-fill"></i>
+                                @elseif ($plan->Vendredi===1)
+                                <i class="bi bi-brightness-high"></i>
+                                @elseif($plan->Vendredi===2)
+                                <i class="bi bi-cloud-moon-fill"></i>
+                                @elseif($plan->Vendredi===3)
+                                <i class="bi bi-moon-fill"></i>
+                                @else
+                                <p>Not valid</p>
+                                @endif
+                            </td>
+
+                            <td>
+                                @if ($plan->Samedi===0)
+                                <i class="bi bi-brightness-alt-high-fill"></i>
+                                @elseif ($plan->Samedi===1)
+                                <i class="bi bi-brightness-high"></i>
+                                @elseif($plan->Samedi===2)
+                                <i class="bi bi-cloud-moon-fill"></i>
+                                @elseif($plan->Samedi===3)
+                                <i class="bi bi-moon-fill"></i>
+                                @else
+                                <p>Not valid</p>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($plan->Dimanche===0)
+                                <i class="bi bi-brightness-alt-high-fill"></i>
+                                @elseif ($plan->Dimanche===1)
+                                <i class="bi bi-brightness-high"></i>
+                                @elseif($plan->Dimanche===2)
+                                <i class="bi bi-cloud-moon-fill"></i>
+                                @elseif($plan->Dimanche===3)
+                                <i class="bi bi-moon-fill cyan-text"></i>
+                                @else
+                                <p>Not valid</p>
+                                @endif
+                            </td>
+
                         </tr>
                     @endforeach
                     {{-- <td>Admin Admin</td>
