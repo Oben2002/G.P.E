@@ -33,20 +33,19 @@
                                     </div>
                                     <div class="modal-body">
                                             <p>At first trial export the data and fill in the informations as follows:</p>
-                                            <ul>
-                                                <li>
-                                                    0 = 8hr30 -17hr30
-                                                </li>
-                                                <li>
-                                                    1 = 8hr30 -14hr30
-                                                </li>
-                                                <li>
-                                                   2 = 13hr30 -20hr
-                                                </li>
-                                                <li>
-                                                    3 = 22hr -4hr
-                                                </li>
-                                            </ul>
+
+                                                   <span><i class="bi bi-brightness-alt-high-fill"></i> </span>   ---->
+                                                    0 = 8hr30 -17hr30</br>
+
+                                                   <span><i class="bi bi-brightness-high"></i></span>   ---->
+                                                    1 = 8hr30 -14hr30</br>
+
+                                                    <span><i class="bi bi-cloud-moon-fill cyan-text"></i></span>   ---->
+                                                   2 = 13hr30 -20hr</br>
+                                                   <span><i class="bi bi-moon-fill cyan-text"></i></span>   ---->
+                                                    3 = 22hr -4hr</br>
+
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
@@ -92,7 +91,7 @@
                 <th scope="col">Dimanche</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center" style="color: #FAC668";">
                     @foreach ($planning as $plan)
                         <tr>
                             <td>{{$plan->id}}</td>
@@ -101,13 +100,13 @@
                                 @if ($plan->Lundi===0)
                                 <i class="bi bi-brightness-alt-high-fill"></i>
                                 @elseif ($plan->Lundi===1)
-                                <i class="bi bi-brightness-high cyan-text"></i>
+                                <i style="color: ;" class="bi bi-brightness-high cyan-text"></i>
                                 @elseif($plan->Lundi===2)
                                 <i class="bi bi-cloud-moon-fill cyan-text"></i>
                                 @elseif($plan->Lundi===3)
                                 <i class="bi bi-moon-fill cyan-text"></i>
                                 @else
-                                <p>Not valid</p>
+                                <i class="bi bi-x"></i>
                                 @endif
 
                             </td>
@@ -121,7 +120,7 @@
                                 @elseif($plan->Mardi===3)
                                 <i class="bi bi-moon-fill"></i>
                                 @else
-                                <p>Not valid</p>
+                                <i class="bi bi-x"></i>
                                 @endif
                             </td>
                             <td>
@@ -134,7 +133,7 @@
                                 @elseif($plan->Mercredi===3)
                                 <i class="bi bi-moon-fill"></i>
                                 @else
-                                <p>Not valid</p>
+                                <i class="bi bi-x"></i>
                                 @endif
                             </td>
                             <td>
@@ -147,7 +146,7 @@
                                 @elseif($plan->Jeudi===3)
                                 <i class="bi bi-moon-fill"></i>
                                 @else
-                                <p>Not valid</p>
+                                <i class="bi bi-x"></i>
                                 @endif
                             </td>
                             <td>
@@ -160,21 +159,21 @@
                                 @elseif($plan->Vendredi===3)
                                 <i class="bi bi-moon-fill"></i>
                                 @else
-                                <p>Not valid</p>
+                                <i class="bi bi-x"></i>
                                 @endif
                             </td>
 
                             <td>
                                 @if ($plan->Samedi===0)
-                                <i class="bi bi-brightness-alt-high-fill"></i>
+                                <i style="color: rebeccapurple;" class="bi bi-brightness-alt-high-fill"></i>
                                 @elseif ($plan->Samedi===1)
-                                <i class="bi bi-brightness-high"></i>
+                                <i style="color: rebeccapurple;" class="bi bi-brightness-high"></i>
                                 @elseif($plan->Samedi===2)
-                                <i class="bi bi-cloud-moon-fill"></i>
+                                <i style="color: rebeccapurple;" class="bi bi-cloud-moon-fill"></i>
                                 @elseif($plan->Samedi===3)
-                                <i class="bi bi-moon-fill"></i>
+                                <i style="color: rebeccapurple;"class="bi bi-moon-fill"></i>
                                 @else
-                                <p>Not valid</p>
+                                <i style="color: rebeccapurple;" class="bi bi-x"></i>
                                 @endif
                             </td>
                             <td>
@@ -187,7 +186,7 @@
                                 @elseif($plan->Dimanche===3)
                                 <i class="bi bi-moon-fill cyan-text"></i>
                                 @else
-                                <p>Not valid</p>
+                                <i class="bi bi-x"></i>
                                 @endif
                             </td>
 

@@ -35,5 +35,31 @@ class PlanningController extends Controller
     {
         return Excel::download(new PlanningExport, 'planning.xlsx');
     }
+
+    public function totalHours(Planning $planning){
+
+
+    }
+    public function Hours(int $jour){
+        if ($jour==0){
+            $hours=9;
+        }
+        elseif($jour= 1){
+            $hours=6;
+        }
+        elseif($jour=2){
+            $hours=6.5;
+        }
+        elseif($jours=3){
+            $hours=6;
+        }
+        else {
+            $hours=0;
+        }
+        return $hours;
+
+    }
     //
+
+
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 09, 2022 at 07:06 AM
+-- Generation Time: Jun 15, 2022 at 11:12 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -71,25 +71,27 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(12, '2014_10_12_000000_create_users_table', 6),
-(13, '2014_10_12_100000_create_password_resets_table', 6),
-(14, '2019_08_19_000000_create_failed_jobs_table', 6),
+(22, '2014_10_12_000000_create_users_table', 8),
+(23, '2014_10_12_100000_create_password_resets_table', 8),
 (5, '2022_04_28_145230_create_personnels_table', 2),
 (6, '2022_05_02_210801_create_schedules_table', 3),
 (7, '2022_05_09_140941_create_personnels_table', 4),
 (8, '2022_05_09_142110_create_personnels_table', 5),
-(15, '2019_12_14_000001_create_personal_access_tokens_table', 6),
-(16, '2022_05_09_195627_create_personnels_table', 6),
-(17, '2022_05_09_212536_create_finger_devices_table', 6),
+(24, '2019_08_19_000000_create_failed_jobs_table', 8),
+(25, '2019_12_14_000001_create_personal_access_tokens_table', 8),
+(26, '2022_05_09_195627_create_personnels_table', 8),
 (18, '2022_06_02_045745_create_plannings_table', 6),
-(19, '2022_06_08_082455_create_plannings_table', 7);
+(19, '2022_06_08_082455_create_plannings_table', 7),
+(27, '2022_05_09_212536_create_finger_devices_table', 8),
+(28, '2022_06_10_161621_create_plannings_table', 8),
+(29, '2022_06_15_115107_create_years_table', 8);
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,14 @@ CREATE TABLE IF NOT EXISTS `personnels` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personnels_name_unique` (`name`),
   UNIQUE KEY `personnels_idb_unique` (`idB`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `personnels`
+--
+
+INSERT INTO `personnels` (`id`, `name`, `role`, `idB`, `created_at`, `updated_at`) VALUES
+(1, 'John Doe', 'Cadre Administratif', NULL, '2022-06-15 21:15:52', '2022-06-15 21:15:52');
 
 -- --------------------------------------------------------
 
@@ -167,21 +176,7 @@ CREATE TABLE IF NOT EXISTS `plannings` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `plannings_employee_foreign` (`Employee`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `plannings`
---
-
-INSERT INTO `plannings` (`id`, `Lundi`, `Mardi`, `Mercredi`, `Jeudi`, `Vendredi`, `Samedi`, `Dimanche`, `Employee`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 'Oben', '2022-06-08 08:01:13', '2022-06-08 08:01:13'),
-(2, 1, 1, 1, 1, 1, 1, 1, 'Oben', '2022-06-08 12:50:40', '2022-06-08 12:50:40'),
-(3, 0, 0, 1, 1, 1, 1, 1, 'Oben', '2022-06-08 16:52:23', '2022-06-08 16:52:23'),
-(4, 1, 1, 1, 1, 1, 1, 1, 'Oben', '2022-06-08 16:52:23', '2022-06-08 16:52:23'),
-(5, 0, 0, 1, 6, 8, 1, 10, 'Oben', '2022-06-08 16:53:49', '2022-06-08 16:53:49'),
-(6, 1, 1, 1, 1, 1, 1, 1, 'Oben', '2022-06-08 16:53:49', '2022-06-08 16:53:49'),
-(7, 0, 0, 1, 6, 8, 1, 10, 'Oben', '2022-06-08 16:58:14', '2022-06-08 16:58:14'),
-(8, 1, 2, 2, 1, 1, 1, 1, 'Oben', '2022-06-08 16:58:14', '2022-06-08 16:58:14');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -196,6 +191,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'user.png',
+  `year` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -208,8 +204,33 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `image`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Dorcas Oben', 'dorcasoben2002@gmail.com', NULL, 'backgroudui.jpg', '$2y$10$Y9ucCpXGU7I23vqDnZAh9OqsbZX9FehrE/yQBmxI7DwJUOz9LyXeW', NULL, '2022-06-06 09:12:21', '2022-06-09 05:42:36');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `image`, `year`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Dorcas Oben', 'dorcasoben2002@gmail.com', NULL, 'user.png', '2021-2022', '$2y$10$ilwcWXJim/NC452i6TQcIenz6o0Lrmrd/3ulosVBEueTsTTpx80jm', NULL, '2022-06-15 20:58:11', '2022-06-15 20:58:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `years`
+--
+
+DROP TABLE IF EXISTS `years`;
+CREATE TABLE IF NOT EXISTS `years` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `libelle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `years`
+--
+
+INSERT INTO `years` (`id`, `libelle`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
+(1, '2021-2022', '2022-01-01', '2022-12-31', NULL, NULL),
+(2, '2022-2023', '2023-01-01', '2023-12-31', NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

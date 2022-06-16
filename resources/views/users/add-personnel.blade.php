@@ -41,7 +41,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="role">Role</label>
-                                            <input type="text" name="role" class="form-control" placeholder="Enter role">
+                                            <select name="role" class="form-control custom-select">
+                                                <option value="">Select role</option>
+                                                <option value="Cadre Administratif"> Cadre Administratif </option>
+                                                <option value="Personnel"> Personnel </option>
+
+                                                </select>
                                         </div>
                                         <div class="col-md-12 text-center">
                                             <button type="submit" class="btn btn-info btn-round">{{ __('Add Personnel') }}</button>

@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            {{--  <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-body ">
                         <div class="row">
@@ -95,8 +95,8 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Followers</p>
-                                    <p class="card-title">+45K
+                                    <p class="card-category">Reports available</p>
+                                    <p class="card-title">
                                         <p>
                                 </div>
                             </div>
@@ -105,11 +105,11 @@
                     <div class="card-footer ">
                         <hr>
                         <div class="stats">
-                            <i class="fa fa-refresh"></i> Update now
+                            <a href="{{route('rapport','personnels')}}" class="btn btn-sm btn-primary">See more</a>
                         </div>
                     </div>
                 </div>
-            </div>  --}}
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12">

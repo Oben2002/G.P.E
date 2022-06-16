@@ -22,9 +22,9 @@ class CreatePlanningsTable extends Migration
             $table->integer('Vendredi');
             $table->integer('Samedi');
             $table->integer('Dimanche');
-            $table->string('Employee');
+            $table->integer('Employee')->unique;
             $table->foreign('Employee')
-                ->references('name')->on('personnels')
+                ->references('id')->constrained('personnels')
                 ->onDelete('cascade');
             $table->timestamps();
         });

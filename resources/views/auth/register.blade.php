@@ -89,6 +89,19 @@
                                         </span>
                                     @endif
                                 </div>
+                                <div class="input-group{{ $errors->has('year') ? ' has-danger' : '' }}">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="nc-icon nc-email-85"></i>
+                                        </span>
+                                    </div>
+                                        <select name="year" class="form-control custom-select">
+                                        <option value="">Select year</option>
+                                        @foreach($year as $y)
+                                        <option value="{{ $y->libelle }}"> {{ $y->libelle }} </option>
+                                        @endforeach
+                                        </select>
+                                </div>
                                 <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">

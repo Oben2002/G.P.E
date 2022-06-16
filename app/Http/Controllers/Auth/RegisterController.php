@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Year;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -30,6 +31,13 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
+    public function showRegistrationForm()
+
+    {
+        $year= Year::all();
+        return view('auth.register',compact('year'));
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -52,6 +60,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'year'=>['required'],
             'agree_terms_and_conditions' => ['required'],
         ]);
     }
@@ -64,9 +73,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'year' =>$data['year'],
             'password' => Hash::make($data['password']),
         ]);
     }
