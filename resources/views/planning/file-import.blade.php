@@ -91,10 +91,11 @@
                 <th scope="col">Dimanche</th>
             </tr>
         </thead>
-        <tbody class="text-center" style="color: #FAC668";">
+        <tbody class="text-center" style="color: #666666";">
                     @foreach ($planning as $plan)
                         <tr>
                             <td>{{$plan->id}}</td>
+                            <td></td>
                             <td>{{$plan->Employee}}</td>
                             <td>
                                 @if ($plan->Lundi===0)
@@ -106,7 +107,7 @@
                                 @elseif($plan->Lundi===3)
                                 <i class="bi bi-moon-fill cyan-text"></i>
                                 @else
-                                <i class="bi bi-x"></i>
+                                <i  style="color: #f01515;" class="bi bi-x"></i>
                                 @endif
 
                             </td>
@@ -120,7 +121,7 @@
                                 @elseif($plan->Mardi===3)
                                 <i class="bi bi-moon-fill"></i>
                                 @else
-                                <i class="bi bi-x"></i>
+                                <i  style="color: #f01515;" class="bi bi-x"></i>
                                 @endif
                             </td>
                             <td>
@@ -133,7 +134,7 @@
                                 @elseif($plan->Mercredi===3)
                                 <i class="bi bi-moon-fill"></i>
                                 @else
-                                <i class="bi bi-x"></i>
+                                <i  style="color: #f01515;" class="bi bi-x"></i>
                                 @endif
                             </td>
                             <td>
@@ -146,7 +147,7 @@
                                 @elseif($plan->Jeudi===3)
                                 <i class="bi bi-moon-fill"></i>
                                 @else
-                                <i class="bi bi-x"></i>
+                                <i style="color: #f01515;" class="bi bi-x"></i>
                                 @endif
                             </td>
                             <td>
@@ -159,7 +160,7 @@
                                 @elseif($plan->Vendredi===3)
                                 <i class="bi bi-moon-fill"></i>
                                 @else
-                                <i class="bi bi-x"></i>
+                                <i style="color: #f01515;" class="bi bi-x"></i>
                                 @endif
                             </td>
 
@@ -173,7 +174,7 @@
                                 @elseif($plan->Samedi===3)
                                 <i style="color: rebeccapurple;"class="bi bi-moon-fill"></i>
                                 @else
-                                <i style="color: rebeccapurple;" class="bi bi-x"></i>
+                                <i style="color: #f01515;" class="bi bi-x"></i>
                                 @endif
                             </td>
                             <td>
@@ -186,9 +187,10 @@
                                 @elseif($plan->Dimanche===3)
                                 <i class="bi bi-moon-fill cyan-text"></i>
                                 @else
-                                <i class="bi bi-x"></i>
+                                <i style="color: #f01515;" class="bi bi-x"></i>
                                 @endif
                             </td>
+                            <td></td>
 
                         </tr>
                     @endforeach

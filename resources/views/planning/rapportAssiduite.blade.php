@@ -227,7 +227,24 @@
       <td>Hebdo</td>
       <td>Mensuel</td>
     </tr>
-    <tbody  id="admin_perm"></tbody>
+    <tbody  id="admin_perm">
+        <tr>
+            <td>1</td>
+            <td>Kenne</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>Ponctuel</td>
+          </tr>
+    </tbody>
 </table>
 <br/>
 <br/>
@@ -260,9 +277,10 @@
       <td>Mensuel</td>
     </tr>
       <tbody  id="admin_vac"></tbody>
-  </table><br>
 
-
+  </table><br/>
+  <br/>
+  <br/>
 <table>
   <tr>
     <td class="gras"><h5>Fait à Yaounde, le <span id="day"></span> </h5></td>

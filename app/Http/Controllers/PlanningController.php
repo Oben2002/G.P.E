@@ -37,8 +37,9 @@ class PlanningController extends Controller
     }
 
     public function totalHours(Planning $planning){
+        $sum= Hours($planning->Lundi)+Hours($planning->Mardi)+Hours($planning->Mercredi)+Hours($planning->Jeudi)+Hours($planning->Vendredi)+Hours($planning->Samedi)+Hours($planning->Dimanche);
 
-
+        return $sum;
     }
     public function Hours(int $jour){
         if ($jour==0){

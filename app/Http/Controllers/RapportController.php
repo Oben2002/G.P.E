@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Rapport;
+use App\Http\Controllers\PlanningController;
 
 
 class RapportController extends Controller
@@ -15,30 +16,17 @@ class RapportController extends Controller
         return view('planning.rapportAssiduite')->with(['rapport' => Rapport::all()]);
     }
 
-    function heures_faites($id_personnel,$rapport_assiduite){
-        $heures_faites=0;
-      for($i=0;$i<count($rapport_assiduite);$i++){
-                if($rapport_assiduite[$i]->id_personnel==$id_personnel){
-                  $sec=explode(":",$rapport_assiduite[$i]->heures_faites);
-                  $secondes=$sec[0]*3600+$sec[1]*60+$sec[2];
-                  $heures_faites+=$secondes;
-                }
-              }
-
-              $heures_faites= round($heures_faites/3600,0);
-              return $heures_faites;
-
+    function heures_faites(Planning $planning){
+        $heures_faites= totalHours($planning);
+        return $heures_faites;
     }
-
-     function heures_mois($heures_heb,$date1,$date2){
-         $date_debut = strtotime($date1);
-         $date_fin = strtotime($date2);
-         $sem=round(($date_fin - $date_debut)/60/60/24/7,0);
-         return ($sem*$heures_heb);
+     function heures_mois(int $sum){
+         return $heures_mois= $sum*4;
     }
 
      function heures_absences($heures_faites,$heures_mois){
-          return ($heures_mois-$heures_faites);
+        $heures_absences=$heures_mois-$heures_faites;
+          return $heures_absences;
     }
 
      function tauxAssiduite($heures_faites,$heures_mois){
@@ -78,6 +66,15 @@ class RapportController extends Controller
       return (($freq_faite/$freq_mois)*100);
     }
 
+    public function createRapport(Request $request){
+        $rapport = new Rapport();
+        $rapport->heures_faites=$request->name;
+        $rapport->heures_absences=$request->role;
 
+        $rapport->save();
+        return back()->with('rapport_created', 'Rapport has been created successfully' );
+
+
+    }
 
 }

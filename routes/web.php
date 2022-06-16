@@ -54,6 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
    Route::get('file-import-export', ['as' =>'file.import-export','uses' => 'App\Http\Controllers\PlanningController@fileImportExport']);
    Route::post('file-import', ['as' =>'file.import','uses' => 'App\Http\Controllers\PlanningController@fileImport']);
    Route::get('file-export', ['as' =>'file.export','uses' => 'App\Http\Controllers\PlanningController@fileExport']);
+   Route::get('hours', ['as' =>'hours','uses' => 'App\Http\Controllers\PlanningController@totalHours']);
    Route::get('rapport', ['as' =>'rapport','uses' => 'App\Http\Controllers\RapportController@index']);
 
 
