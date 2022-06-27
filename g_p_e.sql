@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 15, 2022 at 11:12 PM
+-- Generation Time: Jun 27, 2022 at 04:00 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -146,14 +146,18 @@ CREATE TABLE IF NOT EXISTS `personnels` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personnels_name_unique` (`name`),
   UNIQUE KEY `personnels_idb_unique` (`idB`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `personnels`
 --
 
 INSERT INTO `personnels` (`id`, `name`, `role`, `idB`, `created_at`, `updated_at`) VALUES
-(1, 'John Doe', 'Cadre Administratif', NULL, '2022-06-15 21:15:52', '2022-06-15 21:15:52');
+(1, 'John Doe', 'Cadre Administratif', NULL, '2022-06-15 21:15:52', '2022-06-15 21:15:52'),
+(2, 'Dimitri NANJE', 'Personnel', NULL, '2022-06-27 12:21:22', '2022-06-27 12:21:22'),
+(3, 'Joseph Feussi', 'Personnel', NULL, '2022-06-27 12:21:42', '2022-06-27 12:21:42'),
+(4, 'Jean Mbarga', 'Personnel', NULL, '2022-06-27 12:22:01', '2022-06-27 12:22:01'),
+(5, 'Denio Sorelle', 'Cadre Administratif', NULL, '2022-06-27 12:22:18', '2022-06-27 12:22:18');
 
 -- --------------------------------------------------------
 
