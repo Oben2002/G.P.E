@@ -106,8 +106,8 @@
 
             <td><label for="month"> Période: </label></td>
             <td>
-                    <select name="month" class="form-control custom-select">
-                        <option value="">Sélectionner le mois</option>
+                    <select name="month" id="month" class="form-control custom-select">
+                        <option value="" disable="true" selected="true" >Sélectionner le mois</option>
                         <option value="January">January</option>
                         <option value="February">February</option>
                         <option value="March">March</option>
@@ -123,12 +123,15 @@
                     </select>
                 </td>
                 <td>
-                     <button title="Mettre à jour" id="update" class="oufbutton btn btn-primary"><i class="bi bi-arrow-clockwise"></i> Mettre à jour</button>
+                     <button title="Mettre à jour" id="update" class="oufbutton btn btn-success"><i class="bi bi-arrow-clockwise"></i> Mettre à jour</button>
 
                 </td>
-         <td>
-               <button type='button' id='print'class='oufbutton btn btn-success'><i class="bi bi-printer"></i> Imprimer</button>
-        </td>
+                <td>
+                    <a class="btn btn-primary" href="#"><i class="bi bi-printer"></i> Sauvegarder</a>
+                </td>
+                <td>
+                    <a class="btn btn-success" href="{{ route('rapport.pdf') }}"><i class="bi bi-printer"></i> Export as PDF</a>
+                </td>
 
 
          </tr>
@@ -192,7 +195,11 @@
       RAPPORT SYNTHESE D’ASSIDUITE  ET DE PONCTUALITE
       </h2>
       <h5 style=" margin-bottom: 10px;">
-      Période allant du :  <span id="periodeD" >13/02/2017 </span> au <span id="periodeF">10/03/2017</span>
+      Mois de :<span id="mois"> </span>
+      <script>
+        var mois= document.getElementById("month").options[select.selectedIndex].value;
+        var document.getElementById("mois").innerHTML=mois;
+      </script>
     </h5>
     </td>
   </tr>
@@ -202,7 +209,7 @@
 <table  class="border a-center" style="font-size: 12.5px;">
   <tr><td  style="text-align:center;color:white;size:18px;background-color:hsl(318, 55%, 45%)" colspan="15">1.Du Cadre administratif</td></tr>
     <tr>
-     <th rowspan="3">N°</th>
+     <th rowspan="3">Id</th>
       <th style="width:23%" rowspan="3">Noms et prenoms</th>
       <th rowspan="3" style="width:4%">Fonction</th>
       <th colspan="5" style="text-align:center;">Assiduité</th>
@@ -228,9 +235,13 @@
       <td>Mensuel</td>
     </tr>
     <tbody  id="admin_perm">
+
+
+        @foreach ($personnel as $person)
         <tr>
-            <td>1</td>
-            <td>Kenne</td>
+            @if($person->role=='Cadre Administratif')
+            <td>000{{ $person->id }}</td>
+            <td>{{ $person->name }}</td>
             <td>2</td>
             <td>2</td>
             <td>2</td>
@@ -243,7 +254,11 @@
             <td>2</td>
             <td>2</td>
             <td>Ponctuel</td>
-          </tr>
+            @endif
+        </tr>
+        @endforeach
+
+
     </tbody>
 </table>
 <br/>
@@ -276,7 +291,28 @@
       <td >Hebdo</td>
       <td>Mensuel</td>
     </tr>
-      <tbody  id="admin_vac"></tbody>
+      <tbody  id="admin_vac">
+        @foreach ($personnel as $person)
+        <tr>
+            @if($person->role=='Personnel')
+            <td>000{{ $person->id }}</td>
+            <td>{{ $person->name }}</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>3</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>5</td>
+            <td>2</td>
+            <td>80%</td>
+            <td>Ponctuel</td>
+            @endif
+        </tr>
+        @endforeach
+      </tbody>
 
   </table><br/>
   <br/>
@@ -298,159 +334,11 @@
     var date = d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
     var fullDate = date;
     $("#day").text(fullDate);
-
-    $("#update").on("click",function(){
-      if($("#date1").val()!="" && $("#date2").val()!=""  ) {
-      $("#periodeD").text($("#date1").val());
-      $("#periodeF").text($("#date2").val());
-      $("#admin_perm").html("");
-      $("#ensei_perm").html("");
-      $("#ensei_vac").html("");
-      $("#admin_vac").html("");
-      $.ajax({
-      type: 'GET',
-      url: '/ajaxassiduite/'+$("#date1").val()+"/"+$("#date2").val(),
-      success: function (response) {
-            var ath=0,atm=0,athf=0,atha=0,atta=0,atfh=0,atfm=0,atff=0,atfnf=0,attp=0;
-            var eth=0,etm=0,ethf=0,etha=0,etta=0,etfh=0,etfm=0,etff=0,etfnf=0,ettp=0;
-            var pth=0,ptm=0,pthf=0,ptha=0,ptta=0,ptfh=0,ptfm=0,ptff=0,ptfnf=0,pttp=0;
-            num1=0,num2=0,num3=0,num4=0;
-            if(response.length==0){
-                alert("Données absentes pour charger le rapport");
-            }else{
-            for(i=0;i<response.length;i++){
-
-                if(response[i].statut=="Permanent" && response[i].fonction!="ENSEIGNANT"){
-                  num1++;
-                  $("#admin_perm").append("<tr><td>"+num1+"</td><td>"+response[i].nom+" "+response[i].prenom+"</td><td>"+response[i].grade+"</td><td>"+response[i].fonction+"</td><td>"+response[i].heures_heb+"</td><td>"+response[i].heures_mois+"</td><td>"+response[i].heures_faites+"</td><td>"+response[i].heures_abs+"</td><td>"+response[i].taux_assiduite+"</td><td>"+response[i].freq_heb+"</td><td>"+response[i].freq_mois+"</td><td>"+response[i].freq_faites+"</td><td>"+response[i].freq_Nfaites+"</td><td>"+response[i].taux_ponctualite+"</td><td></td></tr>");
-                  ath+=response[i].heures_heb;
-                  atm+=response[i].heures_mois;
-                  athf+=response[i].heures_faites;
-                  atha+=response[i].heures_abs;
-                  atta+=response[i].taux_assiduite;
-                  atfh+=response[i].freq_heb;
-                  atfm+=response[i].freq_mois;
-                  atff+=response[i].freq_faites;
-                  atfnf+=response[i].freq_Nfaites;
-                  attp+=response[i].taux_ponctualite;
-                }
-                if(response[i].statut=="Permanent" && response[i].fonction=="ENSEIGNANT"){
-                  num2++;
-                  $("#ensei_perm").append("<tr><td>"+num2+"</td><td>"+response[i].nom+" "+response[i].prenom+"</td><td>"+response[i].grade+"</td><td>"+response[i].fonction+"</td><td>"+response[i].heures_heb+"</td><td>"+response[i].heures_mois+"</td><td>"+response[i].heures_faites+"</td><td>"+response[i].heures_abs+"</td><td>"+response[i].taux_assiduite+"</td><td>"+response[i].freq_heb+"</td><td>"+response[i].freq_mois+"</td><td>"+response[i].freq_faites+"</td><td>"+response[i].freq_Nfaites+"</td><td>"+response[i].taux_ponctualite+"</td><td></td></tr>");
-                  eth+=response[i].heures_heb;
-                  etm+=response[i].heures_mois;
-                  ethf+=response[i].heures_faites;
-                  etha+=response[i].heures_abs;
-                  etta+=response[i].taux_assiduite;
-                  etfh+=response[i].freq_heb;
-                  etfm+=response[i].freq_mois;
-                  etff+=response[i].freq_faites;
-                  etfnf+=response[i].freq_Nfaites;
-                  ettp+=response[i].taux_ponctualite;
-                }
-                if(response[i].statut=="Vacataire" && response[i].fonction=="ENSEIGNANT"){
-                  num3++;
-                  $("#ensei_vac").append("<tr><td>"+num3+"</td><td>"+response[i].nom+" "+response[i].prenom+"</td><td>"+response[i].grade+"</td><td>"+response[i].fonction+"</td><td>"+response[i].heures_heb+"</td><td>"+response[i].heures_mois+"</td><td>"+response[i].heures_faites+"</td><td>"+response[i].heures_abs+"</td><td>"+response[i].taux_assiduite+"</td><td>"+response[i].freq_heb+"</td><td>"+response[i].freq_mois+"</td><td>"+response[i].freq_faites+"</td><td>"+response[i].freq_Nfaites+"</td><td>"+response[i].taux_ponctualite+"</td><td></td></tr>");
-                  eth+=response[i].heures_heb;
-                  etm+=response[i].heures_mois;
-                  ethf+=response[i].heures_faites;
-                  etha+=response[i].heures_abs;
-                  etta+=response[i].taux_assiduite;
-                  etfh+=response[i].freq_heb;
-                  etfm+=response[i].freq_mois;
-                  etff+=response[i].freq_faites;
-                  etfnf+=response[i].freq_Nfaites;
-                  ettp+=response[i].taux_ponctualite;
-                }
-                if(response[i].statut=="Vacataire" && response[i].fonction!="ENSEIGNANT"){
-                  num4++;
-                  $("#admin_vac").append("<tr><td>"+num4+"</td><td>"+response[i].nom+" "+response[i].prenom+"</td><td>"+response[i].grade+"</td><td>"+response[i].fonction+"</td><td>"+response[i].heures_heb+"</td><td>"+response[i].heures_mois+"</td><td>"+response[i].heures_faites+"</td><td>"+response[i].heures_abs+"</td><td>"+response[i].taux_assiduite+"</td><td>"+response[i].freq_heb+"</td><td>"+response[i].freq_mois+"</td><td>"+response[i].freq_faites+"</td><td>"+response[i].freq_Nfaites+"</td><td>"+response[i].taux_ponctualite+"</td><td></td></tr>");
-                  ath+=response[i].heures_heb;
-                  atm+=response[i].heures_mois;
-                  athf+=response[i].heures_faites;
-                  atha+=response[i].heures_abs;
-                  atta+=response[i].taux_assiduite;
-                  atfh+=response[i].freq_heb;
-                  atfm+=response[i].freq_mois;
-                  atff+=response[i].freq_faites;
-                  atfnf+=response[i].freq_Nfaites;
-                  attp+=response[i].taux_ponctualite;
-                }
+    $('#month').on('change', function(e){
+        var optionSelected = $("option:selected", this);
+        alert(optionSelected);
+    }
 
 
-            }
-            $("#admin_vac").append('<tr><td id="totalAdmin" style="color:white;size:18px;background-color:red" colspan="4">Total personnel administratif</td><td id="ATH"></td><td id="ATM"></td><td id="ATHF"></td><td id="ATHA"></td><td id="ATTA"></td><td id="ATFH"></td><td id="ATFM"></td><td id="ATFF"></td><td id="ATFNF"></td><td id="ATTP"></td><td></td></tr>');
-            $("#ensei_vac").append('<tr><td id="totalEnsei" colspan="4" style="color:white;size:18px;background-color:red">Total personnel Enseignant</td><td id="ETH"></td><td id="ETM"></td><td id="ETHF"></td><td id="ETHA"></td><td id="ETTA"></td><td id="ETFH"></td><td id="ETFM"></td><td id="ETFF"></td><td id="ETFNF"></td><td id="ETTP"></td><td></td></tr><tr><td id="totalPers" colspan="4" style="color:white;size:18px;background-color:red">Total du personnel du lycée</td><td id="PTH"></td><td id="PTM"></td><td id="PTHF"></td><td id="PTHA"></td><td id="PTTA"></td><td id="PTFH"></td><td id="PTFM"></td><td id="PTFF"></td><td id="PTFNF"></td><td id="PTTP"></td><td ></td></tr>');
-            //totaux des totux
-            pth+=ath+eth;
-            ptm+=atm+etm;
-            pthf+=athf+ethf;
-            ptha+=atha+etha;
-            ptta+=atta+etta;
-            ptfh+=atfh+etfh;
-            ptfm+=atfm+etfm;
-            ptff+=atff+etff;
-            ptfnf+=atfnf+etfnf;
-            pttp+=attp+ettp;
-
-            $("#PTH").text(pth);
-            $("#PTM").text(ptm);
-            $("#PTHF").text(pthf);
-            $("#PTHA").text(pthf);
-            $("#PTTA").text(ptta);
-            $("#PTFH").text(ptfh);
-            $("#PTFM").text(ptfm);
-            $("#PTFF").text(ptff);
-            $("#PTFNF").text(ptfnf);
-            $("#PTTP").text(pttp);
-            //Totaux du personnels administratifs
-            $("#ATH").text(ath);
-            $("#ATM").text(atm);
-            $("#ATHF").text(athf);
-            $("#ATHA").text(athf);
-            $("#ATTA").text(atta);
-            $("#ATFH").text(atfh);
-            $("#ATFM").text(atfm);
-            $("#ATFF").text(atff);
-            $("#ATFNF").text(atfnf);
-            $("#ATTP").text(attp);
-            //totaux Enseignants
-            $("#ETH").text(eth);
-            $("#ETM").text(etm);
-            $("#ETHF").text(ethf);
-            $("#ETHA").text(ethf);
-            $("#ETTA").text(etta);
-            $("#ETFH").text(etfh);
-            $("#ETFM").text(etfm);
-            $("#ETFF").text(etff);
-            $("#ETFNF").text(etfnf);
-            $("#ETTP").text(ettp);
-          }
-      },
-      error: function (jqXHR, exception) {
-        alert(jqXHR);
-      }
-    });
-    }else alert("veuillez sélectionner toutes les dates svp!!!");
-    });
-    $("#jqxExpander").jqxExpander({ theme: "ui-redmond" });
-    $("#print").jqxButton();
-    $("#print").click(function () {
-                  var gridContent = $("#printer").html();
-                  var newWindow = window.open('', '', 'width=800, height=500'),
-                  document = newWindow.document.open(),
-                  pageContent =
-                      '<!DOCTYPE html>\n' +
-                      '<html>\n' +
-                      '<head>\n' +
-                      '<meta charset="utf-8" />\n' +
-                      '<title>G.P.E</title>\n' +
-                      '<link href="../css/rapport-print.css" rel="stylesheet"/>\n' +
-                      '</head>\n' +
-                      '<body>\n' + gridContent + '\n</body>\n</html>';
-                  document.write(pageContent);
-                  document.close();
-                  document.print();
-              });
 
     </script>

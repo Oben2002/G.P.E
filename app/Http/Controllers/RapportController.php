@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Rapport;
+use App\Models\Personnel;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\PlanningController;
+use PDF;
 
 
 class RapportController extends Controller
@@ -13,8 +15,32 @@ class RapportController extends Controller
     //
     public function index()
     {
-        return view('planning.rapportAssiduite')->with(['rapport' => Rapport::all()]);
+        return view('planning.rapportAssiduite')->with(['personnel' => Personnel::all()]);
     }
+    public function rapportOnly()
+    {
+        return view('planning.rapport')->with(['personnel' => Personnel::all()]);
+    }
+
+
+    public function createPDF() {
+        // retreive all records from db
+        $data = Personnel::all();
+        // share data to view
+        view()->share('personnel',$data);
+        $pdf = PDF::loadView('planning.rapport', compact('data'))
+            ->setOptions([
+                "defaultFont" => "Courier",
+                "defaultPaperSize" => "a4",
+                "dpi" => 130,
+                "isHtml5ParserEnabled" => true,
+                "isRemoteEnabled" => true
+            ]);
+        //store in directory storage
+        Storage::disk('public')->put('rapport.pdf', $pdf->output());
+        // download PDF file with download method
+        return Storage::disk('public')->download("rapport.pdf");
+      }
 
     function heures_faites(Planning $planning){
         $heures_faites= totalHours($planning);

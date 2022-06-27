@@ -56,6 +56,9 @@ Route::group(['middleware' => 'auth'], function () {
    Route::get('file-export', ['as' =>'file.export','uses' => 'App\Http\Controllers\PlanningController@fileExport']);
    Route::get('hours', ['as' =>'hours','uses' => 'App\Http\Controllers\PlanningController@totalHours']);
    Route::get('rapport', ['as' =>'rapport','uses' => 'App\Http\Controllers\RapportController@index']);
+   Route::get('rapportOnly', ['as' =>'rapportOnly','uses' => 'App\Http\Controllers\RapportController@rapportOnly']);
+   Route::get('/rapport/pdf', ['as' =>'rapport.pdf','uses' => 'App\Http\Controllers\RapportController@createPDF']);
+
 
 
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
