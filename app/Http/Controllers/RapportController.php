@@ -36,10 +36,10 @@ class RapportController extends Controller
                 "isHtml5ParserEnabled" => true,
                 "isRemoteEnabled" => true
             ]);
-        //store in directory storage
-        Storage::disk('public')->put('rapport.pdf', $pdf->output());
-        // download PDF file with download method
-        return Storage::disk('public')->download("rapport.pdf");
+          //store in directory storage
+          Storage::disk('public')->put('rapport.pdf', $pdf->output());
+          // download PDF file with download method
+          return Storage::disk('public')->download("rapport.pdf");
       }
 
     function heures_faites(Planning $planning){
