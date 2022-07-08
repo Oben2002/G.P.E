@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FingerDevices\StoreDevice;
 use App\Http\Requests\FingerDevices\UpdateDevice;
 use App\Helpers\FingerHelper;
-use App\Models\FingerDevices;
+use App\Models\ZkTeco_devices;
 use App\Models\Personnel;
 use ZKLibrary;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Laradevsbd\Zkteco\Http\Library\ZktecoLib;
+
 
 
 class BiometricDeviceController extends Controller
@@ -18,9 +20,19 @@ class BiometricDeviceController extends Controller
     //
     public function index()
     {
-        $devices = FingerDevices::all();
-
-        return view('fingersDevices.index', compact('devices'));
+        $zk = new ZktecoLib(config('zkteco.ip'),config('zkteco.port'));
+        if ($zk->connect()){
+            $device= new ZkTeco_devices();
+            // Serial Number Sample CDQ9192960002\x00
+            $device->model_name= $zk->deviceName();
+            $device->serialNumber = $zk->serialNumber();
+            $device->port =4370;
+            $device->ip=config('zkteco.ip');
+            $attendance = $zk->getAttendance();
+            return view('fingersDevices.index',compact('attendance','device'));
+        }
+        else
+        return back()->with('Unable to connect', 'Connection problem' );
     }
 
 
@@ -31,16 +43,16 @@ class BiometricDeviceController extends Controller
 
     public function store(StoreDevice $request): RedirectResponse
     {
-        $helper = new FingerHelper();
+        $zk = new ZktecoLib(config('zkteco.ip'),config('zkteco.port'));
 
-        $device = $helper->init($request->input('ip'));
-
-        if ($device->connect()) {
+        if ($zk->connect()) {
+            $device= new ZkTeco_devices();
             // Serial Number Sample CDQ9192960002\x00
-
-            $serial = $helper->getSerial($device);
-
-            FingerDevices::create($request->validated() + ['serialNumber' => $serial]);
+            $device->model_name= $zk->deviceName();
+            $device->serialNumber = $zk->serialNumber();
+            $device->port =4370;
+            $device->ip=config('zkteco.ip');
+            $device->save();
 
         } else {
             return back()->with('Unable to connect', 'Connection problem' );
@@ -51,12 +63,21 @@ class BiometricDeviceController extends Controller
         return redirect()->route('FingerDevices.index');
     }
 
-    public function show(FingerDevices $fingerDevice)
+    public function show()
     {
-        return view('fingersDevices.show', compact('fingerDevice'));
+        $zk = new ZktecoLib(config('zkteco.ip'),config('zkteco.port'));
+
+        if ($zk->connect()) {
+            $deviceUsers = collect($device->getUser())->pluck('uid');
+            return view('fingersDevices.show', compact('deviceUsers'));
+        }
+        else {
+            return back()->with('Unable to connect', 'Connection problem' );
+
+        }
     }
 
-    public function edit(FingerDevices $fingerDevice)
+    /* public function edit(FingerDevices $fingerDevice)
     {
         return view('fingersDevices.edit', compact('fingerDevice'));
     }
@@ -79,27 +100,32 @@ class BiometricDeviceController extends Controller
 
 
         return back();
-    }
+    } */
 
-    public function addPersonnel(FingerDevices $fingerDevice): RedirectResponse
+    public function addPersonnel(): RedirectResponse
     {
-        $device = new ZKLibrary($fingerDevice->ip, 4370);
+        $zk = new ZktecoLib(config('zkteco.ip'),config('zkteco.port'));
 
-        $device->connect();
-
-        $deviceUsers = collect($device->getUser())->pluck('uid');
-
-        $personnel = Personnel::select('name', 'id')
+        if ($zk->connect()) {
+            $deviceUsers = collect($device->getUser())->pluck('uid');
+            $personnel = Personnel::select('name', 'id')
             ->whereNotIn('id', $deviceUsers)
             ->get();
 
-        $i = 1;
+            $i = 1;
 
-        foreach ($personnel as $person) {
+            foreach ($personnel as $person) {
             $device->setUser($i++, $person->id, $person->name, '', '0', '0');
+            }
+
+            return back();
+        }
+        else {
+            return back()->with('Unable to connect', 'Connection problem' );
+
         }
 
-        return back();
+
     }
 
 

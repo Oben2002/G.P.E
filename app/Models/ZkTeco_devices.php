@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class FingerDevices extends Model
+class ZkTeco_devices extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
-        "name",
+        "model_name",
         "ip",
+        "port",
+        "status",
         "serialNumber",
     ];
 }

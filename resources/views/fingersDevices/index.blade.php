@@ -89,17 +89,12 @@
 
                         </thead>
 
-                        @php
-                            $helper = new \App\Helpers\FingerHelper();
-                        @endphp
 
                         <tbody>
 
-                        @foreach($devices as $key => $fingerDevice)
+                        @foreach($device as $key => $fingerDevice)
 
                             <tr data-entry-id="{{ $fingerDevice->id }}">
-
-
 
                                 <td>
 
@@ -109,7 +104,7 @@
 
                                 <td>
 
-                                    {{ $fingerDevice->name ?? '' }}
+                                    {{ $fingerDevice->model_name ?? '' }}
 
                                 </td>
 
@@ -127,11 +122,8 @@
 
                                 <td>
 
-                                    @php
-                                        $device = $helper->init($fingerDevice->ip);
-                                    @endphp
 
-                                    @if($helper->getStatus($device))
+                                    @if($fingerDevice->status== 0)
 
                                         <div class="badge badge-success">
 
@@ -161,10 +153,6 @@
 
                                         </a>
 
-
-
-
-
                                 </td>
 
                                 <td>
@@ -172,52 +160,11 @@
 
                                         <a class="btn btn-xs btn-primary"
 
-                                           href="{{ route('finger.show', $fingerDevice->id) }}">
+                                           href="{{ route('finger.show') }}">
 
                                             {{ trans('global.view') }}
 
                                         </a>
-
-
-
-
-
-
-
-                                        <a class="btn btn-xs btn-info"
-
-                                           href="{{ route('finger.update', $fingerDevice->id) }}">
-
-                                            {{ trans('global.edit') }}
-
-                                        </a>
-
-
-
-
-
-
-
-                                        <form action="{{ route('finger_device.destroy', $fingerDevice->id) }}"
-
-                                              method="POST"
-
-                                              onsubmit="return confirm('{{ trans('global.areYouSure') }}');"
-
-                                              style="display: inline-block;">
-
-                                            <input type="hidden" name="_method" value="DELETE">
-
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                                            <input type="submit" class="btn btn-xs btn-danger"
-
-                                                   value="{{ trans('global.delete') }}">
-
-                                        </form>
-
-
-
 
                                 </td>
 
@@ -241,56 +188,8 @@
 
                 </div>
            @endsection
-           @section('scripts')
 
-           @parent
 
            {{--    @livewireScripts--}}
 
-           <script>
-           // window.livewire.on('userStore', () => {
-           //     $('#exampleModal').modal('hide');
-           // });
-           $(function () {
-               let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-               @can('finger_device_delete')
-               let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
-               let deleteButton = {
-                   text: deleteButtonTrans,
-                   url: "{{ route('admin.finger_device.massDestroy') }}",
-                   className: 'btn-danger',
-                   action: function (e, dt, node, config) {
-                       var ids = $.map(dt.rows({selected: true}).nodes(), function (entry) {
-                           return $(entry).data('entry-id')
-                       });
-                       if (ids.length === 0) {
-                           alert('{{ trans('global.datatables.zero_selected') }}')
-                           return
-                       }
-                       if (confirm('{{ trans('global.areYouSure') }}')) {
-                           $.ajax({
-                               headers: {'x-csrf-token': _token},
-                               method: 'POST',
-                               url: config.url,
-                               data: {ids: ids, _method: 'DELETE'}
-                           })
-                               .done(function () {
-                                   location.reload()
-                               })
-                       }
-                   }
-               }
-               dtButtons.push(deleteButton)
-               @endcan
-               $.extend(true, $.fn.dataTable.defaults, {
-                   orderCellsTop: true,
-                   order: [[1, 'desc']],
-                   pageLength: 100,
-               });
-               let table = $('.datatable-finger_device:not(.ajaxTable)').DataTable({buttons: dtButtons})
-               $('a[data-toggle="tab"]').on('shown.bs.tab click', function (e) {
-                   $($.fn.dataTable.tables(true)).DataTable()
-                       .columns.adjust();
-               });
-           })
-           </script>
+

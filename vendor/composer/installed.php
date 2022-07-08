@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '91a537f090022cba05879a8f0c300bcb64f853cd',
+        'reference' => '816d1746c28406c5f1a2018218939caa198f8ad8',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -430,6 +430,15 @@
                 0 => '*',
             ),
         ),
+        'laradevsbd/zkteco-sdk' => array(
+            'pretty_version' => 'v1.0.0',
+            'version' => '1.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laradevsbd/zkteco-sdk',
+            'aliases' => array(),
+            'reference' => '0f03093e726d483dd7febba6268ca64e3dd3fac8',
+            'dev_requirement' => false,
+        ),
         'laravel/framework' => array(
             'pretty_version' => 'v8.83.10',
             'version' => '8.83.10.0',
@@ -445,7 +454,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '91a537f090022cba05879a8f0c300bcb64f853cd',
+            'reference' => '816d1746c28406c5f1a2018218939caa198f8ad8',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(

@@ -140,6 +140,7 @@ class ComposerStaticInit3b8e66ded01fdf0bac7475d6323341d1
             'Laravel\\Sanctum\\' => 16,
             'Laravel\\Sail\\' => 13,
             'LaravelFrontendPresets\\PaperPreset\\' => 35,
+            'Laradevsbd\\Zkteco\\' => 18,
         ),
         'I' => 
         array (
@@ -460,6 +461,10 @@ class ComposerStaticInit3b8e66ded01fdf0bac7475d6323341d1
             0 => __DIR__ . '/../..' . '/presets/paper/src',
             1 => __DIR__ . '/../..' . '/presets/paper/src',
         ),
+        'Laradevsbd\\Zkteco\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laradevsbd/zkteco-sdk/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -626,6 +631,7 @@ class ComposerStaticInit3b8e66ded01fdf0bac7475d6323341d1
         'App\\Http\\Controllers\\PersonnelController' => __DIR__ . '/../..' . '/app/Http/Controllers/PersonnelController.php',
         'App\\Http\\Controllers\\PlanningController' => __DIR__ . '/../..' . '/app/Http/Controllers/PlanningController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
+        'App\\Http\\Controllers\\RapportController' => __DIR__ . '/../..' . '/app/Http/Controllers/RapportController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -3159,6 +3165,9 @@ class ComposerStaticInit3b8e66ded01fdf0bac7475d6323341d1
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'Laradevsbd\\Zkteco\\Http\\Controllers\\ZktecoController' => __DIR__ . '/..' . '/laradevsbd/zkteco-sdk/src/Http/Controllers/ZktecoController.php',
+        'Laradevsbd\\Zkteco\\Http\\Library\\ZktecoLib' => __DIR__ . '/..' . '/laradevsbd/zkteco-sdk/src/Http/Library/ZktecoLib.php',
+        'Laradevsbd\\Zkteco\\ZktecoServiceProvider' => __DIR__ . '/..' . '/laradevsbd/zkteco-sdk/src/ZktecoServiceProvider.php',
         'LaravelFrontendPresets\\PaperPreset\\PaperPreset' => __DIR__ . '/../..' . '/presets/paper/src/PaperPreset.php',
         'LaravelFrontendPresets\\PaperPreset\\PaperPresetServiceProvider' => __DIR__ . '/../..' . '/presets/paper/src/PaperPresetServiceProvider.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',

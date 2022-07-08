@@ -70,6 +70,7 @@ return array(
     'Laravel\\Sanctum\\' => array($vendorDir . '/laravel/sanctum/src'),
     'Laravel\\Sail\\' => array($vendorDir . '/laravel/sail/src'),
     'LaravelFrontendPresets\\PaperPreset\\' => array($baseDir . '/presets/paper/src', $baseDir . '/presets/paper/src'),
+    'Laradevsbd\\Zkteco\\' => array($vendorDir . '/laradevsbd/zkteco-sdk/src'),
     'Illuminate\\Support\\' => array($vendorDir . '/laravel/framework/src/Illuminate/Macroable', $vendorDir . '/laravel/framework/src/Illuminate/Collections'),
     'Illuminate\\Foundation\\Auth\\' => array($vendorDir . '/laravel/ui/auth-backend'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),

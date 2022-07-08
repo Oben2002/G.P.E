@@ -48,7 +48,7 @@
 
                                 <label class="required" for="ip">{{ trans('cruds.finger_device.fields.ip') }}</label>
 
-                                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text"
+                                <input class="form-control {{ $errors->has('ip') ? 'is-invalid' : '' }}" type="text"
 
                                        name="ip"
 

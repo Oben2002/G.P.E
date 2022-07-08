@@ -177,6 +177,8 @@ return [
         LaravelFrontendPresets\PaperPreset\PaperPresetServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Laradevsbd\Zkteco\ZktecoServiceProvider::class,
+
 
     ],
 

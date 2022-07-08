@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c84c4dfc9ba8c67501896f2f6084b97",
+    "content-hash": "e3a211ae7474153fdb4e136370a41726",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1254,6 +1254,50 @@
                 }
             ],
             "time": "2022-03-20T21:55:58+00:00"
+        },
+        {
+            "name": "laradevsbd/zkteco-sdk",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laradevsbd/zkteco-sdk-laravel.git",
+                "reference": "0f03093e726d483dd7febba6268ca64e3dd3fac8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laradevsbd/zkteco-sdk-laravel/zipball/0f03093e726d483dd7febba6268ca64e3dd3fac8",
+                "reference": "0f03093e726d483dd7febba6268ca64e3dd3fac8",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laradevsbd\\Zkteco\\ZktecoServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laradevsbd\\Zkteco\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nur Karim",
+                    "email": "nurkarim772@gmail.com"
+                }
+            ],
+            "description": "ZKLibrary is PHP Library for ZK Time & Attendance Devices",
+            "support": {
+                "issues": "https://github.com/laradevsbd/zkteco-sdk-laravel/issues",
+                "source": "https://github.com/laradevsbd/zkteco-sdk-laravel/tree/v1.0.0"
+            },
+            "time": "2021-08-25T07:28:36+00:00"
         },
         {
             "name": "laravel/framework",
