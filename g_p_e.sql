@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 27, 2022 at 04:00 PM
+-- Generation Time: Jul 08, 2022 at 03:45 PM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -62,6 +62,25 @@ CREATE TABLE IF NOT EXISTS `finger_devices` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `in_out_logs`
+--
+
+DROP TABLE IF EXISTS `in_out_logs`;
+CREATE TABLE IF NOT EXISTS `in_out_logs` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `in_time` time DEFAULT NULL,
+  `out_time` time DEFAULT NULL,
+  `time_calc` double DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -71,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -91,7 +110,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2022_06_08_082455_create_plannings_table', 7),
 (27, '2022_05_09_212536_create_finger_devices_table', 8),
 (28, '2022_06_10_161621_create_plannings_table', 8),
-(29, '2022_06_15_115107_create_years_table', 8);
+(29, '2022_06_15_115107_create_years_table', 8),
+(30, '2021_08_23_185057_create_zkteco_devices_table', 9),
+(31, '2021_08_23_185624_create_in_out_logs_table', 9),
+(32, '2022_06_16_081247_create_rapports_table', 9);
 
 -- --------------------------------------------------------
 
@@ -185,6 +207,31 @@ CREATE TABLE IF NOT EXISTS `plannings` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rapports`
+--
+
+DROP TABLE IF EXISTS `rapports`;
+CREATE TABLE IF NOT EXISTS `rapports` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `emp_id` int(10) UNSIGNED NOT NULL,
+  `heures_faites` int(11) NOT NULL DEFAULT '0',
+  `heures_d_absence` int(11) NOT NULL DEFAULT '0',
+  `taux_d_assiduite` int(11) NOT NULL DEFAULT '0',
+  `freq_dues_mensuel` int(11) NOT NULL DEFAULT '0',
+  `freq_dues_hebbdo` int(11) NOT NULL DEFAULT '0',
+  `freq_faites` int(11) NOT NULL DEFAULT '0',
+  `freq_nFaites` int(11) NOT NULL DEFAULT '0',
+  `taux de ponctualite` int(11) NOT NULL DEFAULT '0',
+  `Observation` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `rapports_emp_id_foreign` (`emp_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -235,6 +282,24 @@ CREATE TABLE IF NOT EXISTS `years` (
 INSERT INTO `years` (`id`, `libelle`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
 (1, '2021-2022', '2022-01-01', '2022-12-31', NULL, NULL),
 (2, '2022-2023', '2023-01-01', '2023-12-31', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `zkteco_devices`
+--
+
+DROP TABLE IF EXISTS `zkteco_devices`;
+CREATE TABLE IF NOT EXISTS `zkteco_devices` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ip` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `port` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `model_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
