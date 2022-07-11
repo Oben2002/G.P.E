@@ -59,7 +59,7 @@
              <div class="collapse show" id="laravelExamples2">
                                     <ul class="nav">
                                         <li >
-                                            <a href="{{ route('finger.index') }}">
+                                            <a href="{{ route('finger.index'),'fingerDevices' }}">
                                                 <i class="nc-icon nc-tap-01"></i>
                                                 <span class="sidebar-normal">{{ __(' Enrollment ') }}</span>
                                             </a>

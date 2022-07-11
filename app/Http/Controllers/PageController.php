@@ -6,7 +6,7 @@ Use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Personnel;
-use App\Models\FingerDevices;
+use App\Models\ZkTeco_devices;
 use App\Models\User;
 
 
@@ -49,7 +49,7 @@ class PageController extends Controller
         $data=[
         'personnel' => Personnel::count(),
         'user' => User::count(),
-        'FingerDevices' => FingerDevices::count(),
+        'FingerDevices' => ZkTeco_devices::count(),
 
         ];
         if (view()->exists("pages.{$page}")) {

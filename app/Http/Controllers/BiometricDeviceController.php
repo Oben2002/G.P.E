@@ -20,19 +20,33 @@ class BiometricDeviceController extends Controller
     //
     public function index()
     {
-        $zk = new ZktecoLib(config('zkteco.ip'),config('zkteco.port'));
+
+        /* $zk = new ZktecoLib('192.168.8.102',4370);
         if ($zk->connect()){
+
             $device= new ZkTeco_devices();
             // Serial Number Sample CDQ9192960002\x00
             $device->model_name= $zk->deviceName();
             $device->serialNumber = $zk->serialNumber();
             $device->port =4370;
-            $device->ip=config('zkteco.ip');
+            $device->ip='192.168.8.102';
             $attendance = $zk->getAttendance();
             return view('fingersDevices.index',compact('attendance','device'));
         }
         else
-        return back()->with('Unable to connect', 'Connection problem' );
+        return back()->with('Unable to connect', 'Connection problem' ); */
+
+        $fingerDevices= new ZkTeco_devices();
+        // Serial Number Sample CDQ9192960002\x00
+        $fingerDevices->model_name= "ZKTECO";
+        $fingerDevices->ip='192.168.8.102';
+        $fingerDevices->port =4370;
+        $fingerDevices->status=1;
+        $fingerDevices->save();
+
+        $fg= ZkTeco_devices::all();
+        return view('fingersDevices.index',compact('fg'));
+
     }
 
 
@@ -43,18 +57,20 @@ class BiometricDeviceController extends Controller
 
     public function store(StoreDevice $request): RedirectResponse
     {
-        $zk = new ZktecoLib(config('zkteco.ip'),config('zkteco.port'));
+
+        $ip =$request->input('ip');
+        $zk = new ZktecoLib($ip,4370);
 
         if ($zk->connect()) {
             $device= new ZkTeco_devices();
             // Serial Number Sample CDQ9192960002\x00
             $device->model_name= $zk->deviceName();
-            $device->serialNumber = $zk->serialNumber();
             $device->port =4370;
-            $device->ip=config('zkteco.ip');
+            $device->ip='192.168.8.102';
             $device->save();
-
-        } else {
+            $zk->disconnect();
+        }
+            else {
             return back()->with('Unable to connect', 'Connection problem' );
 
 
@@ -104,7 +120,7 @@ class BiometricDeviceController extends Controller
 
     public function addPersonnel(): RedirectResponse
     {
-        $zk = new ZktecoLib(config('zkteco.ip'),config('zkteco.port'));
+        $zk = new ZktecoLib('192.168.8.102',4370);
 
         if ($zk->connect()) {
             $deviceUsers = collect($device->getUser())->pluck('uid');
@@ -118,15 +134,16 @@ class BiometricDeviceController extends Controller
             $device->setUser($i++, $person->id, $person->name, '', '0', '0');
             }
 
-            return back();
-        }
+            return back()->with('Success', 'success' );        }
         else {
             return back()->with('Unable to connect', 'Connection problem' );
 
         }
+    }
+
 
 
     }
 
 
-}
+

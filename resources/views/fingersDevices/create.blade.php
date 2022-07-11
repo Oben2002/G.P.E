@@ -20,7 +20,7 @@
 
                     <div class="card-body">
 
-                        <form method="POST" action="{{ route("FingerDevices.store") }}">
+                        <form method="POST" action="{{ route("finger.store") }}">
 
                             @csrf
 

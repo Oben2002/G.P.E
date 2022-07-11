@@ -9,7 +9,7 @@
 
                 <div class="col-lg-12">
 
-                    <a class="btn btn-success" href="{{ route('FingerDevices.create') }}">
+                    <a class="btn btn-success" href="{{ route('finger.create') }}">
 
                         Add new Biometric Device
 
@@ -68,11 +68,6 @@
 
                             </th>
 
-                            <th>
-
-                                {{ trans('cruds.finger_device.fields.serialNumber') }}
-
-                            </th>
 
                             <th>
 
@@ -92,9 +87,9 @@
 
                         <tbody>
 
-                        @foreach($device as $key => $fingerDevice)
+                        @foreach($fg as $fingerDevice)
 
-                            <tr data-entry-id="{{ $fingerDevice->id }}">
+                            <tr >
 
                                 <td>
 
@@ -114,16 +109,12 @@
 
                                 </td>
 
-                                <td>
 
-                                    {{ $fingerDevice->serialNumber ?? '' }}
-
-                                </td>
 
                                 <td>
 
 
-                                    @if($fingerDevice->status== 0)
+                                      @if($fingerDevice->status== 0)
 
                                         <div class="badge badge-success">
 
@@ -143,20 +134,21 @@
 
 
 
-                                        <a class="btn btn-xs btn-outline-success"
 
-                                           href="{{ route('finger.add', $finger_device->id) }}">
+
+                                </td>
+
+                                <td>
+
+                                    <a class="btn btn-xs btn-outline-success"
+
+                                           href="{{ route('finger.add'),'fingerDevice'  }}">
 
                                             <i class="fas fa-plus"></i>
 
                                             Add Employee
 
                                         </a>
-
-                                </td>
-
-                                <td>
-
 
                                         <a class="btn btn-xs btn-primary"
 
