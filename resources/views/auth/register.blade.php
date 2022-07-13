@@ -97,6 +97,9 @@
                                     </div>
                                         <select name="year" class="form-control custom-select">
                                         <option value="">Select year</option>
+                                        <option value="">2021-2022</option>
+                                        <option value="">2022-2023</option>
+
                                         @foreach($year as $y)
                                         <option value="{{ $y->libelle }}"> {{ $y->libelle }} </option>
                                         @endforeach
