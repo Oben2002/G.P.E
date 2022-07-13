@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Personnel;
-use App\Models\Zk_Teco_devices;
+use App\Models\ZK_Teco_devices;
 use App\Models\User;
 
 
@@ -28,7 +28,7 @@ class HomeController extends Controller
         $data=[
             'personnel' => Personnel::count(),
             'user' => User::count(),
-            'FingerDevices' => Zk_Teco_devices::count()
+            'FingerDevices' => ZK_Teco_devices::count()
             ];
         return view('pages.dashboard',compact('data'));
     }
