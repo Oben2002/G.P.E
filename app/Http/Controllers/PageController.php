@@ -54,7 +54,7 @@ class PageController extends Controller
         ];
         if (view()->exists("pages.{$page}")) {
 
-            return view("pages.{$page}")->with('data', $data)->with('datas',$datas);
+            return view("pages.{$page}")->with('data', $data);
         }
 
         return abort(404);
