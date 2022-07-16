@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FingerDevices\StoreDevice;
 use App\Http\Requests\FingerDevices\UpdateDevice;
 use App\Helpers\FingerHelper;
-use App\Models\Zk_Teco_devices;
+use App\Models\ZK_Teco_devices;
 use App\Models\Personnel;
 use ZKLibrary;
 use Illuminate\Http\Request;
@@ -36,7 +36,7 @@ class BiometricDeviceController extends Controller
         else
         return back()->with('Unable to connect', 'Connection problem' ); */
 
-        $fingerDevices= new Zk_Teco_devices();
+        $fingerDevices= new ZK_Teco_devices();
         // Serial Number Sample CDQ9192960002\x00
         $fingerDevices->model_name= "ZKTECO";
         $fingerDevices->ip='192.168.8.102';
@@ -44,7 +44,7 @@ class BiometricDeviceController extends Controller
         $fingerDevices->status=1;
         $fingerDevices->save();
 
-        $fg= Zk_Teco_devices::all();
+        $fg= ZK_Teco_devices::all();
         return view('fingersDevices.index',compact('fg'));
 
     }
@@ -59,10 +59,10 @@ class BiometricDeviceController extends Controller
     {
 
         $ip =$request->input('ip');
-        $zk = new ZktecoLib($ip,4370);
+        $zk = new ZKtecoLib($ip,4370);
 
         if ($zk->connect()) {
-            $device= new ZkTeco_devices();
+            $device= new ZKTeco_devices();
             // Serial Number Sample CDQ9192960002\x00
             $device->model_name= $zk->deviceName();
             $device->port =4370;
