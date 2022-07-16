@@ -76,134 +76,142 @@
                                         {{Session::get('status')}}
                                     </div>
                                 @endif
-<div class="table-responsive">
-    <table class="table align-items-center table-flush table-striped">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Employee</th>
-                <th scope="col">Lundi</th>
-                <th scope="col">Mardi</th>
-                <th scope="col">Mercredi</th>
-                <th scope="col">Jeudi</th>
-                <th scope="col">Vendredi</th>
-                <th scope="col">Samedi</th>
-                <th scope="col">Dimanche</th>
-            </tr>
-        </thead>
-        <tbody class="text-center" style="color: #666666";">
-                    @foreach ($planning as $plan)
-                        <tr>
-                            <td>{{$plan->id}}</td>
-                            <td></td>
-                            <td>{{$plan->Employee}}</td>
-                            <td>
-                                @if ($plan->Lundi===0)
-                                <i class="bi bi-brightness-alt-high-fill"></i>
-                                @elseif ($plan->Lundi===1)
-                                <i style="color: ;" class="bi bi-brightness-high cyan-text"></i>
-                                @elseif($plan->Lundi===2)
-                                <i class="bi bi-cloud-moon-fill cyan-text"></i>
-                                @elseif($plan->Lundi===3)
-                                <i class="bi bi-moon-fill cyan-text"></i>
-                                @else
-                                <i  style="color: #f01515;" class="bi bi-x"></i>
-                                @endif
+    @if ($planning === NULL){
+        <h3>No data present</h3>
+    }
 
-                            </td>
+    @else {
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Employee</th>
+                        <th scope="col">Lundi</th>
+                        <th scope="col">Mardi</th>
+                        <th scope="col">Mercredi</th>
+                        <th scope="col">Jeudi</th>
+                        <th scope="col">Vendredi</th>
+                        <th scope="col">Samedi</th>
+                        <th scope="col">Dimanche</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center" style="color: #666666";">
+                            @foreach ($planning as $plan)
+                                <tr>
+                                    <td>{{$plan->id}}</td>
+                                    <td></td>
+                                    <td>{{$plan->Employee}}</td>
+                                    <td>
+                                        @if ($plan->Lundi===0)
+                                        <i class="bi bi-brightness-alt-high-fill"></i>
+                                        @elseif ($plan->Lundi===1)
+                                        <i style="color: ;" class="bi bi-brightness-high cyan-text"></i>
+                                        @elseif($plan->Lundi===2)
+                                        <i class="bi bi-cloud-moon-fill cyan-text"></i>
+                                        @elseif($plan->Lundi===3)
+                                        <i class="bi bi-moon-fill cyan-text"></i>
+                                        @else
+                                        <i  style="color: #f01515;" class="bi bi-x"></i>
+                                        @endif
+        
+                                    </td>
+                                    <td>
+                                        @if ($plan->Mardi===0)
+                                        <i class="bi bi-brightness-alt-high-fill"></i>
+                                        @elseif ($plan->Mardi===1)
+                                        <i class="bi bi-brightness-high"></i>
+                                        @elseif($plan->Mardi===2)
+                                        <i class="bi bi-cloud-moon-fill"></i>
+                                        @elseif($plan->Mardi===3)
+                                        <i class="bi bi-moon-fill"></i>
+                                        @else
+                                        <i  style="color: #f01515;" class="bi bi-x"></i>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($plan->Mercredi===0)
+                                        <i class="bi bi-brightness-alt-high-fill"></i>
+                                        @elseif ($plan->Mercredi===1)
+                                        <i class="bi bi-brightness-high"></i>
+                                        @elseif($plan->Mercredi===2)
+                                        <i class="bi bi-cloud-moon-fill"></i>
+                                        @elseif($plan->Mercredi===3)
+                                        <i class="bi bi-moon-fill"></i>
+                                        @else
+                                        <i  style="color: #f01515;" class="bi bi-x"></i>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($plan->Jeudi===0)
+                                        <i class="bi bi-brightness-alt-high-fill"></i>
+                                        @elseif ($plan->Jeudi===1)
+                                        <i class="bi bi-brightness-high"></i>
+                                        @elseif($plan->Jeudi===2)
+                                        <i class="bi bi-cloud-moon-fill"></i>
+                                        @elseif($plan->Jeudi===3)
+                                        <i class="bi bi-moon-fill"></i>
+                                        @else
+                                        <i style="color: #f01515;" class="bi bi-x"></i>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($plan->Vendredi===0)
+                                        <i class="bi bi-brightness-alt-high-fill"></i>
+                                        @elseif ($plan->Vendredi===1)
+                                        <i class="bi bi-brightness-high"></i>
+                                        @elseif($plan->Vendredi===2)
+                                        <i class="bi bi-cloud-moon-fill"></i>
+                                        @elseif($plan->Vendredi===3)
+                                        <i class="bi bi-moon-fill"></i>
+                                        @else
+                                        <i style="color: #f01515;" class="bi bi-x"></i>
+                                        @endif
+                                    </td>
+        
+                                    <td>
+                                        @if ($plan->Samedi===0)
+                                        <i style="color: rebeccapurple;" class="bi bi-brightness-alt-high-fill"></i>
+                                        @elseif ($plan->Samedi===1)
+                                        <i style="color: rebeccapurple;" class="bi bi-brightness-high"></i>
+                                        @elseif($plan->Samedi===2)
+                                        <i style="color: rebeccapurple;" class="bi bi-cloud-moon-fill"></i>
+                                        @elseif($plan->Samedi===3)
+                                        <i style="color: rebeccapurple;"class="bi bi-moon-fill"></i>
+                                        @else
+                                        <i style="color: #f01515;" class="bi bi-x"></i>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($plan->Dimanche===0)
+                                        <i class="bi bi-brightness-alt-high-fill"></i>
+                                        @elseif ($plan->Dimanche===1)
+                                        <i class="bi bi-brightness-high"></i>
+                                        @elseif($plan->Dimanche===2)
+                                        <i class="bi bi-cloud-moon-fill"></i>
+                                        @elseif($plan->Dimanche===3)
+                                        <i class="bi bi-moon-fill cyan-text"></i>
+                                        @else
+                                        <i style="color: #f01515;" class="bi bi-x"></i>
+                                        @endif
+                                    </td>
+                                    <td></td>
+        
+                                </tr>
+                            @endforeach
+                            {{-- <td>Admin Admin</td>
                             <td>
-                                @if ($plan->Mardi===0)
-                                <i class="bi bi-brightness-alt-high-fill"></i>
-                                @elseif ($plan->Mardi===1)
-                                <i class="bi bi-brightness-high"></i>
-                                @elseif($plan->Mardi===2)
-                                <i class="bi bi-cloud-moon-fill"></i>
-                                @elseif($plan->Mardi===3)
-                                <i class="bi bi-moon-fill"></i>
-                                @else
-                                <i  style="color: #f01515;" class="bi bi-x"></i>
-                                @endif
+                                <a href="mailto:admin@paper.com">admin@paper.com</a>
                             </td>
-                            <td>
-                                @if ($plan->Mercredi===0)
-                                <i class="bi bi-brightness-alt-high-fill"></i>
-                                @elseif ($plan->Mercredi===1)
-                                <i class="bi bi-brightness-high"></i>
-                                @elseif($plan->Mercredi===2)
-                                <i class="bi bi-cloud-moon-fill"></i>
-                                @elseif($plan->Mercredi===3)
-                                <i class="bi bi-moon-fill"></i>
-                                @else
-                                <i  style="color: #f01515;" class="bi bi-x"></i>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($plan->Jeudi===0)
-                                <i class="bi bi-brightness-alt-high-fill"></i>
-                                @elseif ($plan->Jeudi===1)
-                                <i class="bi bi-brightness-high"></i>
-                                @elseif($plan->Jeudi===2)
-                                <i class="bi bi-cloud-moon-fill"></i>
-                                @elseif($plan->Jeudi===3)
-                                <i class="bi bi-moon-fill"></i>
-                                @else
-                                <i style="color: #f01515;" class="bi bi-x"></i>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($plan->Vendredi===0)
-                                <i class="bi bi-brightness-alt-high-fill"></i>
-                                @elseif ($plan->Vendredi===1)
-                                <i class="bi bi-brightness-high"></i>
-                                @elseif($plan->Vendredi===2)
-                                <i class="bi bi-cloud-moon-fill"></i>
-                                @elseif($plan->Vendredi===3)
-                                <i class="bi bi-moon-fill"></i>
-                                @else
-                                <i style="color: #f01515;" class="bi bi-x"></i>
-                                @endif
-                            </td>
+                            <td>25/02/2020 11:37</td>
+                                                                    </tr> --}}
+                 </tbody>
+            </table>
+        
+        </div>
+    }
 
-                            <td>
-                                @if ($plan->Samedi===0)
-                                <i style="color: rebeccapurple;" class="bi bi-brightness-alt-high-fill"></i>
-                                @elseif ($plan->Samedi===1)
-                                <i style="color: rebeccapurple;" class="bi bi-brightness-high"></i>
-                                @elseif($plan->Samedi===2)
-                                <i style="color: rebeccapurple;" class="bi bi-cloud-moon-fill"></i>
-                                @elseif($plan->Samedi===3)
-                                <i style="color: rebeccapurple;"class="bi bi-moon-fill"></i>
-                                @else
-                                <i style="color: #f01515;" class="bi bi-x"></i>
-                                @endif
-                            </td>
-                            <td>
-                                @if ($plan->Dimanche===0)
-                                <i class="bi bi-brightness-alt-high-fill"></i>
-                                @elseif ($plan->Dimanche===1)
-                                <i class="bi bi-brightness-high"></i>
-                                @elseif($plan->Dimanche===2)
-                                <i class="bi bi-cloud-moon-fill"></i>
-                                @elseif($plan->Dimanche===3)
-                                <i class="bi bi-moon-fill cyan-text"></i>
-                                @else
-                                <i style="color: #f01515;" class="bi bi-x"></i>
-                                @endif
-                            </td>
-                            <td></td>
 
-                        </tr>
-                    @endforeach
-                    {{-- <td>Admin Admin</td>
-                    <td>
-                        <a href="mailto:admin@paper.com">admin@paper.com</a>
-                    </td>
-                    <td>25/02/2020 11:37</td>
-                                                            </tr> --}}
-         </tbody>
-    </table>
-
-</div>
                         </div>
                         </div>
                         </div>
