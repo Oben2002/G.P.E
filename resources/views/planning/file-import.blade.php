@@ -76,7 +76,7 @@
                                         {{Session::get('status')}}
                                     </div>
                                 @endif
-    @if ($planning === NULL)
+    @if (is_null($planning))
         <h3>No data present</h3>
     
 
