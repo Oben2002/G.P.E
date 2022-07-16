@@ -76,11 +76,11 @@
                                         {{Session::get('status')}}
                                     </div>
                                 @endif
-    @if ($planning === NULL){
+    @if ($planning === NULL)
         <h3>No data present</h3>
-    }
+    
 
-    @else {
+    @else 
         <div class="table-responsive">
             <table class="table align-items-center table-flush table-striped">
                 <thead class="thead-light">
@@ -199,17 +199,12 @@
         
                                 </tr>
                             @endforeach
-                            {{-- <td>Admin Admin</td>
-                            <td>
-                                <a href="mailto:admin@paper.com">admin@paper.com</a>
-                            </td>
-                            <td>25/02/2020 11:37</td>
-                                                                    </tr> --}}
+                                                                    </tr> 
                  </tbody>
             </table>
-        
+       
         </div>
-    }
+    @endif
 
 
                         </div>
