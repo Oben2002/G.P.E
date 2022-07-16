@@ -123,15 +123,15 @@ class BiometricDeviceController extends Controller
         $zk = new ZktecoLib('192.168.8.102',4370);
 
         if ($zk->connect()) {
-            $deviceUsers = collect($device->getUser())->pluck('uid');
+            $/* deviceUsers = collect($device->getUser())->pluck('uid');
             $personnel = Personnel::select('name', 'id')
             ->whereNotIn('id', $deviceUsers)
             ->get();
-
+ */         $personnel =Personnel::all();
             $i = 1;
 
             foreach ($personnel as $person) {
-            $device->setUser($i++, $person->id, $person->name, '', '0', '0');
+            $device->setUser($i++, $person->id, $person->name, '12345678', '0');
             }
 
             return back()->with('Success', 'success' );        }
