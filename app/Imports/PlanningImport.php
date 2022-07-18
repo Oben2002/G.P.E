@@ -19,14 +19,12 @@ class PlanningImport implements ToModel,WithHeadingRow,WithUpserts
     public function model(array $row)
 
     {
-        $emp=$row['employee'];
-        $id=$row['id'];
+        $found = array(
+            'Employee'=>$row['employee'],
+            'id'=>$row['id']
+        );
 
-        $planning = DB::table('plannings')
-                ->where('employee', '=', $emp)
-                ->where('id', '=', $id)
-                ->get();
-                
+        $planning = Planning::where($found)->first();
         if ($planning== null){
             return new Planning([
 

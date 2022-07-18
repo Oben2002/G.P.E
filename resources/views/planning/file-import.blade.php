@@ -76,11 +76,9 @@
                                         {{Session::get('status')}}
                                     </div>
                                 @endif
-    @if (is_null($planning))
-        <h3>No data present</h3>
-    
 
-    @else 
+
+
         <div class="table-responsive">
             <table class="table align-items-center table-flush table-striped">
                 <thead class="thead-light">
@@ -100,7 +98,6 @@
                             @foreach ($planning as $plan)
                                 <tr>
                                     <td>{{$plan->id}}</td>
-                                    <td></td>
                                     <td>{{$plan->Employee}}</td>
                                     <td>
                                         @if ($plan->Lundi===0)
@@ -114,7 +111,7 @@
                                         @else
                                         <i  style="color: #f01515;" class="bi bi-x"></i>
                                         @endif
-        
+
                                     </td>
                                     <td>
                                         @if ($plan->Mardi===0)
@@ -168,7 +165,7 @@
                                         <i style="color: #f01515;" class="bi bi-x"></i>
                                         @endif
                                     </td>
-        
+
                                     <td>
                                         @if ($plan->Samedi===0)
                                         <i style="color: rebeccapurple;" class="bi bi-brightness-alt-high-fill"></i>
@@ -196,15 +193,15 @@
                                         @endif
                                     </td>
                                     <td></td>
-        
+
                                 </tr>
                             @endforeach
-                                                                    </tr> 
+                                                                    </tr>
                  </tbody>
             </table>
-       
+
         </div>
-    @endif
+
 
 
                         </div>

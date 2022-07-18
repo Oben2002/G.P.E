@@ -42,13 +42,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/FingerDevices', 'App\Http\Controllers\BiometricDeviceController@store')->name('finger.store');
     Route::post('/FingerDevices', 'App\Http\Controllers\BiometricDeviceController@update')->name('finger.update');
  */
+    Route::get('attendance-index',['as' => 'attendance.index', 'uses'=> 'App\Http\Controllers\AttendanceController@index']);
+    Route::get('attendance-add',['as' => 'attendance.add', 'uses'=> 'App\Http\Controllers\AttendanceController@addAttendance']);
+
 
 
     Route::get('FingerDevices-index' , [ 'as'=> 'finger.index', 'uses'=>'App\Http\Controllers\BiometricDeviceController@index']);
     Route::get('FingerDevices-create' , [ 'as'=> 'finger.create', 'uses'=>'App\Http\Controllers\BiometricDeviceController@create']);
     Route::get('FingerDevices-show' , [ 'as'=> 'finger.show', 'uses'=>'App\Http\Controllers\BiometricDeviceController@show']);
     Route::post('FingerDevices-store' , [ 'as'=> 'finger.store', 'uses'=>'App\Http\Controllers\BiometricDeviceController@store']);
-    Route::post('FingerDevices-add' , [ 'as'=> 'finger.add', 'uses'=>'App\Http\Controllers\BiometricDeviceController@addPersonnel']);
+    Route::get('FingerDevices-add' , [ 'as'=> 'finger.add', 'uses'=>'App\Http\Controllers\BiometricDeviceController@addPersonnel']);
    // Route::post('FingerDevices-update' , [ 'as'=> 'finger.update', 'uses'=>'App\Http\Controllers\BiometricDeviceController@update']);
 
    Route::get('file-import-export', ['as' =>'file.import-export','uses' => 'App\Http\Controllers\PlanningController@fileImportExport']);

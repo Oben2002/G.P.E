@@ -36,13 +36,13 @@ class BiometricDeviceController extends Controller
         else
         return back()->with('Unable to connect', 'Connection problem' ); */
 
-        $fingerDevices= new ZK_Teco_devices();
+        /* $fingerDevices= new ZK_Teco_devices();
         // Serial Number Sample CDQ9192960002\x00
         $fingerDevices->model_name= "ZKTECO";
         $fingerDevices->ip='192.168.8.102';
         $fingerDevices->port =4370;
         $fingerDevices->status=1;
-        $fingerDevices->save();
+        $fingerDevices->save(); */
 
         $fg= ZK_Teco_devices::all();
         return view('fingersDevices.index',compact('fg'));
@@ -59,16 +59,17 @@ class BiometricDeviceController extends Controller
     {
 
         $ip =$request->input('ip');
-        $zk = new ZKtecoLib($ip,4370);
+        $name= $request->input('name');
+        $zk = new ZKtecoLib($ip,4370,'TCP');
 
         if ($zk->connect()) {
-            $device= new ZKTeco_devices();
-            // Serial Number Sample CDQ9192960002\x00
-            $device->model_name= $zk->deviceName();
+            $device= new ZK_Teco_devices();
+            // Serial Number Sample CDQ9192960002\x00 $zk->deviceName();
+            $device->model_name=$name;
             $device->port =4370;
-            $device->ip='192.168.8.102';
+            $device->ip=$ip;
             $device->save();
-            $zk->disconnect();
+            //$zk->disconnect();
         }
             else {
             return back()->with('Unable to connect', 'Connection problem' );
@@ -76,7 +77,7 @@ class BiometricDeviceController extends Controller
 
         }
 
-        return redirect()->route('FingerDevices.index');
+        return redirect()->route('finger.index');
     }
 
     public function show()
@@ -120,10 +121,10 @@ class BiometricDeviceController extends Controller
 
     public function addPersonnel(): RedirectResponse
     {
-        $zk = new ZktecoLib('192.168.8.102',4370);
+        $zk = new ZktecoLib('192.168.8.103',4370);
 
         if ($zk->connect()) {
-            $/* deviceUsers = collect($device->getUser())->pluck('uid');
+            /* deviceUsers = collect($device->getUser())->pluck('uid');
             $personnel = Personnel::select('name', 'id')
             ->whereNotIn('id', $deviceUsers)
             ->get();

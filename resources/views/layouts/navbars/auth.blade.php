@@ -64,6 +64,12 @@
                                                 <span class="sidebar-normal">{{ __(' Enrollment ') }}</span>
                                             </a>
                                         </li>
+                                        <li >
+                                            <a href="{{ route('attendance.index'),'attendances' }}">
+                                                <i class="nc-icon nc-tap-01"></i>
+                                                <span class="sidebar-normal">{{ __(' Attendance ') }}</span>
+                                            </a>
+                                        </li>
 
                                     </ul>
                                 </div>
