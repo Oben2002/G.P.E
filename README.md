@@ -1,66 +1,67 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# GPE
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+GPE est une application de gestion de présence électronique à l'aide d'appareil biometrique: lecteur d'empreinte.
 
-## About Laravel
+## LOGICIEL
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Premierement il faut installer php:
+- [Windows](https://grafikart.fr/tutoriels/windows-php-mysql-901#:~:text=L'installation%20de%20PHP%20est,la%20version%20Non%20Thread%20Safe)
+- [Linux](https://doc.ubuntu-fr.org/php#:~:text=Il%20existe%204%20mani%C3%A8res%20d,fpm%20pour%20FastCGI%20Process%20Manager)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+En second lieu il faut installer Laravel 8:
+- [Windows](https://laratutorials.com/install-composer-windows-10-xampp/)
+- [Linux](https://ubunlog.com/fr/laravel-framework-php-ubuntu/#:~:text=Pour%20installer%20Laravel%2C%20nous%20irons,%2F%20Var%20%2F%20www%20%2F%20html.&text=La%20commande%20ci%2Ddessus%20cr%C3%A9era,avec%20l'installation%20de%20Laravel.)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Apres avoir cloner le projet, vous le lancerez sur un IDE de votre choix et ouvrirez votre projet sur terminale.
 
-## Learning Laravel
+Afin d'installer les dépendances, sur le terminale ouvert, vous lancerez les commandes:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+composer install
+```
+Puis
+```
+npm i
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Ensuite, sur l'IDE vous irez vers ''.env'' et allez renseigner les informations sur votre base de donnees créée au préalable(Le SGBD, le username, le password, le nom de la BD).
 
-## Laravel Sponsors
+Maintenant migrer les tables vers votre BD en tapant sur le terminale précédemment ouvert la commande:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```php migrate
+php artisan migrate
+```
+Maintenant vous pouvez lancer le projet:
+```
+php artisan serve
+```
+NB: en cas déchec de lancement faite un:
+```
+composer update
+```
+puis relancez.
 
-### Premium Partners
+## Materiel
+- Ordinateur avec un systeme Linux ou Windows ou MacOS avec au moins 1,7 GHz, 80 gb de ROM, 2 Gb de RAM
+- Un Point d'access pour etablir la connexion entre la machine et le lecteur d'empreinte
+- Un lecteur d'empreinte.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Contacts
+- Github:
+```
+Kameronaf
+```
+```
 
-## Contributing
+- Email:bikahf5@gmail.com
+```
+```
+Oben2002
+```
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Email:dorcasoben2002@gmail.com
+```
 
 ## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-"# G.P.E" 
-"# G.P.E" 
+[MIT](https://choosealicense.com/licenses/mit/)
