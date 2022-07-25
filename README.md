@@ -47,16 +47,15 @@ puis relancez.
 - Un lecteur d'empreinte.
 
 ## Contacts
-- GithUP:
+- Github:
 ```
 Kameronaf
 ```
 ```
-dorcasoben2002@gmail.com
-```
+bikahf5@gmail.com
 - Email:
 ```
-bikahf5@gmail.com
+dorcasoben2002@gmail.com
 ```
 ```
 Oben2002
